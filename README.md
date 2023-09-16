@@ -1,2 +1,2 @@
 # WebEN
-An educational platform to teach English or another languages.
+An educational platform to help the systematic view inside a school or institution.
