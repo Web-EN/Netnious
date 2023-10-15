@@ -3,3 +3,7 @@ Plataforma educacional para mejorar el rendimiento y eficiencia de los profesora
 
 ## ¿Cómo será el desarrollo del proyecto?
 Cada tarea será representada por una "issue" en proyectos. Las issues tienen uno o varios asignados y expone un hilo de discusión para hablar sobre la tarea.
+
+## Herramientas a usar 
+- Flutter 3.13.7
+- Node.js v18.16.0.
