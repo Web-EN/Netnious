@@ -3,6 +3,7 @@ Plataforma educacional para mejorar el rendimiento y eficiencia de los profesora
 
 ## ¿Cómo será el desarrollo del proyecto?
 Cada tarea será representada por una "issue" en proyectos. Las issues tienen uno o varias personas asignadas y expone un hilo de discusión para hablar sobre la tarea.
+Entra a nuestra [wiki](https://github.com/Web-EN/Netnious/wiki) para averiguar como colaborar y la razón del por qué utilizamos ciertas herramientas.
 
 ## Herramientas a usar 
 - Flutter 3.13.7
