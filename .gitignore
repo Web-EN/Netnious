@@ -1,1 +1,6 @@
+.vim/
 .vscode/
+*.out
+*.exe
+*.env
+/node_modules
