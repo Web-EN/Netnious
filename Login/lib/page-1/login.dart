@@ -8,9 +8,17 @@ class Scene extends StatefulWidget {
   _SceneState createState() => _SceneState();
 }
 
+
 class _SceneState extends State<Scene> {
   String _usuarioTextField = "";
   String _passwordTextField = "";
+  bool _obscureText = true; // Variable para rastrear la visibilidad de la contraseña
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     double baseWidth = 430;
@@ -62,19 +70,28 @@ class _SceneState extends State<Scene> {
                 child: Container(
                   child: SafeArea(
                     child: Scaffold(
-                      body: Column(children: [
-                        TextField(
-                          decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Contraseña',
-                        ),
-                        onSubmitted: (password) {
-                          setState(() {
-                          _passwordTextField = password;
-                          });
-                        },
+                      body: Row(
+                        children: [
+                        Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Contraseña',
                       ),
-                    ]),
+                      obscureText: _obscureText, // Utiliza _obscureText aquí
+                      onSubmitted: (password) {
+                        setState(() {
+                          _passwordTextField = password;
+                        });
+                      },
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: _togglePasswordVisibility,
+                    child: Text(_obscureText ? 'Mostrar' : 'Ocultar'),
+                  ),
+                    ]
+                  ),
                   ),
                 ),
                 ),
@@ -145,7 +162,37 @@ class _SceneState extends State<Scene> {
                   ),
                 ),
               ),
-            )
+            ),
+            Positioned(
+              left: 65*fem,
+              top: 42*fem,
+              child: Align(
+                child: SizedBox(
+                  width: 298*fem,
+                  height: 261*fem,
+                  child: Image.asset(
+                    'assets/page-1/images/ingeniuslogo-1.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
+            ),
+            Positioned(
+              // vector1G2W (3:103)
+              left: 0*fem,
+              top: 652*fem,
+              child: Align(
+                child: SizedBox(
+                  width: 432*fem,
+                  height: 286*fem,
+                  child: Image.asset(
+                    'assets/page-1/images/vector-1.png',
+                    width: 432*fem,
+                    height: 286*fem,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
