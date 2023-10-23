@@ -37,7 +37,9 @@ app.post("/login", async (req, res) => {
       res.status(200).json({ token });
     } else {
       res.status(401).json({ message: "Credenciales incorrectas" });
+      console.log(user);
     }
+    // res.status(200).json({ token });
   } catch (error) {
     console.error('Error al manejar la solicitud:', error);
     res.status(500).json({ message: "Error en el servidor" });
