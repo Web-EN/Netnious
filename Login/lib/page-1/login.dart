@@ -98,40 +98,40 @@ class _SceneState extends State<Scene> {
               ),
             ),
             Positioned(
-                left: 62 * fem,
-                top: 273 * fem,
-                child: Container(
-                  width: 100 * fem,
-                  height: 50 * fem,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 21, vertical: 9),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: ShapeDecoration(
-                    color: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1 * fem),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+              left: 62*fem,
+              top: 243*fem,
+              child: Container(
+                width: 150*fem,
+                height: 50*fem,
+                padding: const EdgeInsets.symmetric(horizontal: 21,vertical: 9 ),
+                clipBehavior: Clip.antiAlias,
+                decoration: ShapeDecoration(
+                  color: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(width: 1*fem),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Login',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w300,
-                          height: 0,
-                        ),
-                      )
-                    ],
-                  ),
-                )),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Inicio de Seción',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15*fem,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w300,
+                        height: 0,
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ),
             Positioned(
               left: 140 * fem,
               top: 566 * fem,
