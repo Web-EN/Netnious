@@ -99,9 +99,9 @@ class _SceneState extends State<Scene> {
             ),
             Positioned(
               left: 62*fem,
-              top: 273 * fem,
+              top: 243*fem,
               child: Container(
-                width: 100*fem,
+                width: 150*fem,
                 height: 50*fem,
                 padding: const EdgeInsets.symmetric(horizontal: 21,vertical: 9 ),
                 clipBehavior: Clip.antiAlias,
@@ -118,11 +118,11 @@ class _SceneState extends State<Scene> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Login',
+                      'Inicio de Seción',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15,
+                        fontSize: 15*fem,
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w300,
                         height: 0,
