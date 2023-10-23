@@ -102,7 +102,7 @@ class _SceneState extends State<Scene> {
               top: 243*fem,
               child: Container(
                 width: 150*fem,
-                height: 50*fem,
+                height: 51*fem,
                 padding: const EdgeInsets.symmetric(horizontal: 21,vertical: 9 ),
                 clipBehavior: Clip.antiAlias,
                 decoration: ShapeDecoration(
