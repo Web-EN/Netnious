@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/director/inicio_director.dart';
-import 'package:myapp/utils.dart';
 import 'package:http/http.dart' as http;
 
 class Scene extends StatefulWidget {
