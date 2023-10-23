@@ -1,12 +1,16 @@
-const { Client } = require('pg');
+//Importaciones
 require('dotenv').config();
+const { Client } = require('pg');
 const express = require('express');
+const { getUserFromDatabase, generateAuthToken } = require('./auth');
+
+//Inicializaciones
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3000;
-const { getUserFromDatabase, generateAuthToken } = require('./auth');
 
+//Rutas
 app.get("/",(req, res) => {
   res.send("Hello");
 });

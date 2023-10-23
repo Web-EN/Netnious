@@ -83,7 +83,7 @@ async function getUserFromDatabase(username, password, client) {
 }
 //Para generar token
 function generateAuthToken(user) {
-    
+
   const secretKey = crypto.randomBytes(32).toString('hex');
 
   //Solo define el token
