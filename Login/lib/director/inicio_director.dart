@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:fl_chart/fl_chart.dart';
 
-class Scene extends StatefulWidget {
+class Director extends StatefulWidget {
   @override
   _SceneState createState() => _SceneState();
 }
 
 
-class _SceneState extends State<Scene> {
+class _SceneState extends State<Director> {
   String _mensajeTextField = '';
   String selectedOption = 'Análisis promedio';
   List<String> options = ['Análisis promedio', 'Rendimiento Académico'];
