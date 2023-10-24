@@ -1,6 +1,8 @@
+import 'package:Netnious/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:myapp/utils.dart';
+import 'package:Netnious/utils.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class Scene extends StatefulWidget {
   @override
@@ -10,6 +12,13 @@ class Scene extends StatefulWidget {
 
 class _SceneState extends State<Scene> {
   String _mensajeTextField = '';
+  String selectedOption = 'Análisis promedio';
+  List<String> options = ['Análisis promedio', 'Rendimiento Académico'];
+   String _selectedOption = 'Análisis de Asistencia';
+
+  List<double> asistenciaPorBimestre = [90, 85, 92, 88];
+  List<double> notasPromedioPorBimestre = [85, 88, 90, 87];
+
   final TextEditingController _messageController = TextEditingController();
 
   void _sendMessage(){
@@ -80,7 +89,8 @@ class _SceneState extends State<Scene> {
                   width: 377*fem,
                   height: 168*fem,
                   child: Container(
-                             decoration: ShapeDecoration(
+                    margin: EdgeInsets.fromLTRB(5.3*fem, 1*fem, 5.3*fem, 1*fem),
+                    decoration: ShapeDecoration(
                     color: Color(0xFFF7D7CD),
                     shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -104,6 +114,7 @@ class _SceneState extends State<Scene> {
                               controller: _messageController,
                               decoration: InputDecoration(
                                 hintText: 'Escribe algun mensaje...',
+                                
                               ),
                             )
                           )
@@ -145,9 +156,175 @@ class _SceneState extends State<Scene> {
                           ],
                         ),
                     ),
-              ]
+                    Positioned(
+                      left: 24*fem ,
+                      top: 404*fem, 
+                      child: Text(
+                  'Estado General',
+                style: SafeGoogleFont (
+                  'Roboto',
+                  fontSize: 22*ffem,
+                  fontWeight: FontWeight.w400,
+                  height: 1.1725*ffem/fem,
+                  color: Color(0xff000000),
+                ),
+              ),
+                    ),
+                     Positioned(
+              left: 24 * fem,
+              top: 132 * fem,
+              child: DropdownButton<String>(
+                value: _selectedOption,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _selectedOption = newValue!;
+                  });
+                },
+                items: ['Análisis de Asistencia', 'Otra Opción'].map((String item) {
+                  return DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(item),
+                  );
+                }).toList(),
+              ),
+            ),
+            if (_selectedOption == 'Análisis de Asistencia')
+              Positioned(
+                left: 23 * fem,
+                top: 436 * fem,
+                child: SizedBox(
+                  height: 250 * fem,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF7D7CD),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0x3F000000),
+                          blurRadius: 4,
+                          offset: Offset(0, 4),
+                          spreadRadius: 0,
+                        ),
+                      ],
+                    ),
+                    child: AspectRatio(
+                      aspectRatio: 1.5, // Controla la relación de aspecto del gráfico
+                      child: BarChart(
+                        BarChartData(
+                          titlesData: FlTitlesData(
+                            leftTitles: SideTitles(showTitles: true),
+                            bottomTitles: SideTitles(
+                              showTitles: true,
+                              getTitles: (value) {
+                                switch (value.toInt()) {
+                                  case 0:
+                                    return '1°Bim';
+                                  case 1:
+                                    return '2°Bim';
+                                  case 2:
+                                    return '3°Bim';
+                                  case 3:
+                                    return '4°Bim';
+                                  default:
+                                    return '';
+                                }
+                              },
+                            ),
+                          ),
+                          borderData: FlBorderData(
+                            show: true,
+                          ),
+                          barGroups: asistenciaPorBimestre
+                              .asMap()
+                              .entries
+                              .map((entry) {
+                            return BarChartGroupData(
+                              x: entry.key,
+                              barRods: [
+                                BarChartRodData(
+                                  y: entry.value,
+                                  width: 16 * fem,
+                                  colors: [Colors.blue],
+                                ),
+                              ],
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
                   ),
-                )
-              );
+                ),
+              ),
+            if (_selectedOption == 'Otra Opción')
+              Positioned(
+                left: 23 * fem,
+                top: 436 * fem,
+                child: SizedBox(
+                  height: 250 * fem,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF7D7CD),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0x3F000000),
+                          blurRadius: 4,
+                          offset: Offset(0, 4),
+                          spreadRadius: 0,
+                        ),
+                      ],
+                    ),
+                    child: AspectRatio(
+                      aspectRatio: 1.5,
+                      child: BarChart(
+                        BarChartData(
+                          titlesData: FlTitlesData(
+                            leftTitles: SideTitles(showTitles: true),
+                            bottomTitles: SideTitles(
+                              showTitles: true,
+                              getTitles: (value) {
+                                switch (value.toInt()) {
+                                  case 0:
+                                    return '1°Bim';
+                                  case 1:
+                                    return '2°Bim';
+                                  case 2:
+                                    return '3°Bim';
+                                  case 3:
+                                    return '4°Bim';
+                                  default:
+                                    return '';
+                                }
+                              },
+                            ),
+                          ),
+                          borderData: FlBorderData(
+                            show: true,
+                          ),
+                          barGroups: notasPromedioPorBimestre
+                              .asMap()
+                              .entries
+                              .map((entry) {
+                            return BarChartGroupData(
+                              x: entry.key,
+                              barRods: [
+                                BarChartRodData(
+                                  y: entry.value,
+                                  width: 16 * fem,
+                                  colors: [Colors.green],
+                                ),
+                              ],
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
   }
 }
