@@ -10,6 +10,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3000;
 
+// Permite todos las peticiones CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:50035'); // Cambiar esta dirección de ser necesario
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 //Rutas
 app.get("/",(req, res) => {
   res.send("Hello");
@@ -24,7 +32,7 @@ app.post("/login", async (req, res) => {
   const client = new Client({
     user: 'postgres',
     host: process.env.HOST,
-    database: 'postgres',
+    database: 'weben',
     password: process.env.PASSWORD,
     port: 5432,
   });
@@ -32,12 +40,12 @@ app.post("/login", async (req, res) => {
   try {
     await client.connect();
     const user = await getUserFromDatabase(username, password, client);
+    // console.log(username, password, client);
     if (user) {
       const token = generateAuthToken(user);
       res.status(200).json({ token });
     } else {
       res.status(401).json({ message: "Credenciales incorrectas" });
-      console.log(user);
     }
     // res.status(200).json({ token });
   } catch (error) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/director/inicio_director.dart';
 import 'package:http/http.dart' as http;
 
 class Scene extends StatefulWidget {
@@ -219,6 +220,10 @@ class _SceneState extends State<Scene> {
     if (response.statusCode == 200) {
       final token = response.body;
       //Guarda el token si la conexión fue exitosa
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => inicio_director()),
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

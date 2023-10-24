@@ -7,11 +7,12 @@ async function getUserFromDatabase(username, password, client) {
   try {
     // Realizar una consulta SQL para verificar las credenciales
     const query = {
-      text: 'SELECT usuario, hashed_pass FROM public.usuarios WHERE usuario = $1 AND hashed_pass = $2',
+      text: 'SELECT usuario, hashed_pass FROM public."Usuarios" WHERE usuario = $1 AND hashed_pass = $2',
       values: [username, password],
     };
 
     const result = await client.query(query);
+    console.log(result.rows);
 
     if (result.rows.length === 1) {
       const user = result.rows[0];
