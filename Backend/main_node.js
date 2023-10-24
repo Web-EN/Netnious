@@ -10,6 +10,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3000;
 
+// Permite todos las peticiones CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:50035'); // Cambiar esta dirección de ser necesario
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 //Rutas
 app.get("/",(req, res) => {
   res.send("Hello");
@@ -36,10 +44,8 @@ app.post("/login", async (req, res) => {
     if (user) {
       const token = generateAuthToken(user);
       res.status(200).json({ token });
-      console.log('YEIIIIIIIIII');
     } else {
       res.status(401).json({ message: "Credenciales incorrectas" });
-      console.log('hola');
     }
     // res.status(200).json({ token });
   } catch (error) {

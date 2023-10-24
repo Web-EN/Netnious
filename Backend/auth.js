@@ -21,7 +21,7 @@ async function getUserFromDatabase(username, password, client) {
         username: user.username,
       };
     } else {
-      return false;
+      return null;
     }
   } catch (error) {
     console.error('Error al consultar la base de datos:', error);
