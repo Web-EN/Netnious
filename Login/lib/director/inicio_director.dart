@@ -1,7 +1,6 @@
-import 'package:Netnious/utils.dart';
+import 'package:Login/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:Netnious/utils.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class Scene extends StatefulWidget {
@@ -114,7 +113,6 @@ class _SceneState extends State<Scene> {
                               controller: _messageController,
                               decoration: InputDecoration(
                                 hintText: 'Escribe algun mensaje...',
-                                
                               ),
                             )
                           )
@@ -158,7 +156,7 @@ class _SceneState extends State<Scene> {
                     ),
                     Positioned(
                       left: 24*fem ,
-                      top: 404*fem, 
+                      top: 404*fem,
                       child: Text(
                   'Estado General',
                 style: SafeGoogleFont (
