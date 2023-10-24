@@ -24,7 +24,7 @@ app.post("/login", async (req, res) => {
   const client = new Client({
     user: 'postgres',
     host: process.env.HOST,
-    database: 'postgres',
+    database: 'weben',
     password: process.env.PASSWORD,
     port: 5432,
   });
@@ -32,12 +32,14 @@ app.post("/login", async (req, res) => {
   try {
     await client.connect();
     const user = await getUserFromDatabase(username, password, client);
+    // console.log(username, password, client);
     if (user) {
       const token = generateAuthToken(user);
       res.status(200).json({ token });
+      console.log('YEIIIIIIIIII');
     } else {
       res.status(401).json({ message: "Credenciales incorrectas" });
-      console.log(user);
+      console.log('hola');
     }
     // res.status(200).json({ token });
   } catch (error) {
