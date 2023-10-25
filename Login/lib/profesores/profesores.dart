@@ -1,0 +1,143 @@
+import 'package:flutter/material.dart';
+
+class Profesores extends StatefulWidget {
+  @override
+  _ProfesoresState createState() => _ProfesoresState();
+}
+
+class _ProfesoresState extends State<Profesores> {
+  TextEditingController _searchController = TextEditingController();
+  List<String> profesores = [
+    'Maria Elena',
+    'Salinas',
+    'Juanito',
+    'Chumacero',
+  ];
+
+  List<String> searchResults = [];
+
+  void updateSearchResults() {
+    setState(() {
+      searchResults = profesores
+          .where((profesor) => profesor
+              .toLowerCase()
+              .contains(_searchController.text.toLowerCase()))
+          .toList();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('NETNIOUS'),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(left: 30, top: 30),
+            child: Text('Profesores: ', style: TextStyle(fontSize: 20)),
+          ),
+          SizedBox(height: 20),
+          Center(
+            child: Container(
+              width: 400,
+              height: 300,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 0, 0, 0),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: 10),
+                  Container(
+                    width: double.infinity,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: InkWell(
+                            onTap: updateSearchResults,
+                            child: Icon(
+                              Icons.search,
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: SizedBox(
+                            width: 10,
+                            height: 30,
+                            child: TextField(
+                              controller: _searchController,
+                              onChanged: (text) {
+                                updateSearchResults();
+                              },
+                              decoration: InputDecoration(
+                                hintText: 'Buscar',
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    width: double.infinity,
+                    height: 180,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Scrollbar(
+                      child: ListView.builder(
+                        itemCount: searchResults.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(title: Text(searchResults[index]));
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                      const Color.fromARGB(255, 0, 0, 0)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  textStyle: MaterialStateProperty.all(
+                    TextStyle(color: Colors.white),
+                  ),
+                ),
+                child: Text('Agregar'),
+              ),
+              SizedBox(width: 25),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
