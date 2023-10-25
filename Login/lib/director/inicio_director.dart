@@ -57,7 +57,9 @@ class _SceneState extends State<Director> {
     double baseWidth = 430;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return Container(
+    return Scaffold(
+        body: SingleChildScrollView(
+          child: Container(
       width: double.infinity,
       child: Container(
         width: double.infinity,
@@ -344,6 +346,8 @@ class _SceneState extends State<Director> {
           ],
         ),
       ),
+    );
+        )
     );
   }
 }
