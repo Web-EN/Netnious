@@ -1,6 +1,6 @@
 import 'package:Netnious/utils.dart';
 import 'package:flutter/material.dart';
-import 'director/inicio_director.dart';
+import 'page-1/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: SingleChildScrollView(
-          child: Director(),
+          child: Scene(),
         ),
       ),
     );
