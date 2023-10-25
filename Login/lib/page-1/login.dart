@@ -122,7 +122,7 @@ class _SceneState extends State<Scene> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15*fem,
+                        fontSize: 14*ffem,
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w300,
                         height: 0,
@@ -192,7 +192,7 @@ class _SceneState extends State<Scene> {
                   width: 432 * fem,
                   height: 286 * fem,
                   child: Image.asset(
-                    'assets/page-1/images/vector-1.png',
+                    'assets/page-1/images/Vector1.png',
                     width: 432 * fem,
                     height: 286 * fem,
                   ),
