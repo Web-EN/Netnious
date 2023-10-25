@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'profesores.dart';
 
 class Menu extends StatelessWidget {
   @override

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'utils.dart';
-import '/page-1/login.dart';
+import 'profesores/menu_profesores.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,17 +7,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter',
       debugShowCheckedModeBanner: false,
-      scrollBehavior: MyCustomScrollBehavior(),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        body: SingleChildScrollView(
-          child: Scene(),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: <Widget>[
+            Text('Tu Título'),
+          ],
         ),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
+      body: Center(
+        child: Text(' '),
+      ),
+      endDrawer: Menu(),
     );
   }
 }
