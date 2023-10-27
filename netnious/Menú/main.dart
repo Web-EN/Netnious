@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'profesores/menu_profesores.dart';
+import 'director/menu_director.dart';
 
 void main() => runApp(MyApp());
 
