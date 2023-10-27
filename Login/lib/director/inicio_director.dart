@@ -57,7 +57,9 @@ class _SceneState extends State<Director> {
     double baseWidth = 430;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return Container(
+    return Scaffold(
+        body: SingleChildScrollView(
+          child: Container(
       width: double.infinity,
       child: Container(
         width: double.infinity,
@@ -133,8 +135,8 @@ class _SceneState extends State<Director> {
                           child: Text(
                             'Notificar',
                             style: SafeGoogleFont(
-            'Roboto',fontSize: 18*fem
-                  )
+              'Roboto',fontSize: 14*fem, fontWeight: FontWeight.w400, height: 1.1725*ffem/fem
+                    )
                           ),
                         ),
                         )
@@ -169,27 +171,30 @@ class _SceneState extends State<Director> {
               ),
                     ),
                      Positioned(
-              left: 24 * fem,
-              top: 132 * fem,
-              child: DropdownButton<String>(
+              left: 38 * fem,
+              top: 436 * fem,
+              child: Container(
+                height: 30*fem,
+                width: 200*fem,
+                child: DropdownButton<String>(
                 value: _selectedOption,
                 onChanged: (String? newValue) {
                   setState(() {
                     _selectedOption = newValue!;
                   });
                 },
-                items: ['Análisis de Asistencia', 'Otra Opción'].map((String item) {
+                items: ['Análisis de Asistencia', 'Rendimiento Academico'].map((String item) {
                   return DropdownMenuItem<String>(
                     value: item,
-                    child: Text(item),
+                    child: Text(item, style: SafeGoogleFont('Roboto',fontSize: 14*ffem,fontWeight: FontWeight.w400,height: 1.1725*ffem/fem,color: Color(0xff000000)),),
                   );
                 }).toList(),
-              ),
+              ),)
             ),
             if (_selectedOption == 'Análisis de Asistencia')
               Positioned(
-                left: 23 * fem,
-                top: 436 * fem,
+                left: 24 * fem,
+                top: 490 * fem,
                 child: SizedBox(
                   height: 250 * fem,
                   child: Container(
@@ -211,6 +216,7 @@ class _SceneState extends State<Director> {
                         BarChartData(
                           titlesData: FlTitlesData(
                             leftTitles: SideTitles(showTitles: true),
+                            topTitles: SideTitles(showTitles: false),
                             bottomTitles: SideTitles(
                               showTitles: true,
                               getTitles: (value) {
@@ -253,10 +259,10 @@ class _SceneState extends State<Director> {
                   ),
                 ),
               ),
-            if (_selectedOption == 'Otra Opción')
+            if (_selectedOption == 'Rendimiento Academico')
               Positioned(
-                left: 23 * fem,
-                top: 436 * fem,
+                left: 24 * fem,
+                top: 490 * fem,
                 child: SizedBox(
                   height: 250 * fem,
                   child: Container(
@@ -278,6 +284,7 @@ class _SceneState extends State<Director> {
                         BarChartData(
                           titlesData: FlTitlesData(
                             leftTitles: SideTitles(showTitles: true),
+                            topTitles: SideTitles(showTitles: false),
                             bottomTitles: SideTitles(
                               showTitles: true,
                               getTitles: (value) {
@@ -320,9 +327,27 @@ class _SceneState extends State<Director> {
                   ),
                 ),
               ),
+              Positioned(
+              // vector1G2W (3:103)
+              left: 0 * fem,
+              top: 735 * fem,
+              child: Align(
+                child: SizedBox(
+                  width: 432 * fem,
+                  height: 286 * fem,
+                  child: Image.asset(
+                    'assets/page-1/images/Vector_4_upscaled.png',
+                    width: 432 * fem,
+                    height: 286 * fem,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
+    );
+        )
     );
   }
 }
