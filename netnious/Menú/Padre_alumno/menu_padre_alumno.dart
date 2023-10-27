@@ -54,7 +54,7 @@ class Menu extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            leading: const Icon(Icons.folder, color: Colors.white),
+            leading: const Icon(Icons.archive, color: Colors.white),
             title: const Text(
               'Material',
               style: TextStyle(
@@ -65,7 +65,7 @@ class Menu extends StatelessWidget {
             onTap: () {},
           ),
           const CustomExpansionTile(
-            icon: Icon(Icons.person_4_outlined, color: Colors.white),
+            icon: Icon(Icons.group, color: Colors.white),
             title: Text(
               'Visualizar Análisis del Alumno',
               style: TextStyle(

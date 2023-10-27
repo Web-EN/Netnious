@@ -1,171 +1,198 @@
 import 'package:flutter/material.dart';
 
-class Menu extends StatelessWidget {
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 350,
-      decoration: BoxDecoration(
-        color: Color.fromARGB(255, 44, 44, 44),
+    return const MaterialApp(
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('NETNIOUS'),
       ),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.home, color: Colors.white),
-              title: Text(
-                'Inicio',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                ),
+      body: const Center(
+        child: Text('Contenido de la pantalla principal'),
+      ),
+      endDrawer: const Menu(),
+    );
+  }
+}
+
+class Menu extends StatelessWidget {
+  const Menu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: const Color.fromARGB(255, 44, 44, 44),
+      child: ListView(
+        children: <Widget>[
+          ListTile(
+            leading: const Icon(Icons.home,
+                color: Color.fromARGB(255, 255, 255, 255)),
+            title: const Text(
+              'Inicio',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
               ),
-              onTap: () {},
             ),
-            ListTile(
-              leading: Icon(Icons.folder, color: Colors.white),
-              title: Text(
-                'Material',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                ),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.archive, color: Colors.white),
+            title: const Text(
+              'Material',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
               ),
-              onTap: () {},
             ),
-            CustomExpansionTile(
-              icon: Icon(Icons.app_registration, color: Colors.white),
-              title: Text(
-                'Reportes y Registros',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                ),
+            onTap: () {},
+          ),
+          CustomExpansionTile(
+            icon: Icon(Icons.folder_open, color: Colors.white),
+            title: Text(
+              'Reportes y Registros',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
               ),
-              children: <Widget>[
-                CustomListTile(
-                  leadingIcon: Icon(
-                    Icons.check,
+            ),
+            children: <Widget>[
+              CustomListTile(
+                leadingIcon: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  'Registrar Notas',
+                  style: TextStyle(
                     color: Colors.white,
+                    fontSize: 17,
                   ),
-                  title: Text(
-                    'Registrar Notas',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Visualizar',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            CustomExpansionTile(
-              icon: Icon(Icons.account_tree, color: Colors.white),
-              title: Text(
-                'Registro Académico',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
                 ),
               ),
-              children: <Widget>[
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Asignar Fecha del Proyecto',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Visualizar',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
                   ),
-                ),
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Asignar Fecha de Evaluaciones',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Registrar Asistencia',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            CustomExpansionTile(
-              icon: Icon(Icons.person_4_outlined, color: Colors.white),
-              title: Text(
-                'Visualizar Análisis del Alumno',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
                 ),
               ),
-              children: <Widget>[
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Ver Reporte de Notas',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Ver Reporte de Asistencias',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Ver Informes de Clases',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-              ],
+            ],
+          ),
+          CustomExpansionTile(
+            icon: Icon(Icons.library_add_check, color: Colors.white),
+            title: Text(
+              'Registro Académico',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+              ),
             ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app, color: Colors.white),
-              title: Text(
-                'Salir',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
+            children: <Widget>[
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Asignar Fecha del Proyecto',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
                 ),
               ),
-              onTap: () {},
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Asignar Fecha de Evaluaciones',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Registrar Asistencia',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const CustomExpansionTile(
+            icon: Icon(Icons.group, color: Colors.white),
+            title: Text(
+              'Visualizar Análisis del Alumno',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+              ),
             ),
-          ],
-        ),
+            children: <Widget>[
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Ver Reporte de Notas',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Ver Reporte de Asistencias',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Ver Informes de Clases',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app, color: Colors.white),
+            title: const Text(
+              'Salir',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+              ),
+            ),
+            onTap: () {},
+          ),
+        ],
       ),
     );
   }
@@ -176,11 +203,14 @@ class CustomExpansionTile extends StatefulWidget {
   final Widget title;
   final List<Widget> children;
 
-  CustomExpansionTile(
-      {required this.icon, required this.title, required this.children});
+  const CustomExpansionTile({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.children,
+  });
 
   @override
-  // ignore: library_private_types_in_public_api
   _CustomExpansionTileState createState() => _CustomExpansionTileState();
 }
 
@@ -228,12 +258,13 @@ class CustomListTile extends StatelessWidget {
   final Icon leadingIcon;
   final Widget title;
 
-  CustomListTile({required this.leadingIcon, required this.title});
+  const CustomListTile(
+      {super.key, required this.leadingIcon, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(255, 66, 66, 66),
+      color: const Color.fromARGB(255, 66, 66, 66),
       child: ListTile(
         leading: leadingIcon,
         title: title,
