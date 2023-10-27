@@ -43,7 +43,7 @@ class _ProfesoresState extends State<Profesores> {
             ),
           ],
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: Color.fromARGB(255, 235, 235, 235),
         toolbarHeight: 60.0,
         iconTheme: IconThemeData(color: Colors.black),
       ),
@@ -67,7 +67,7 @@ class _ProfesoresState extends State<Profesores> {
                   height: 300,
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 0, 0, 0),
+                    color: const Color.fromARGB(255, 247, 215, 205),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Column(
@@ -122,12 +122,19 @@ class _ProfesoresState extends State<Profesores> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Scrollbar(
-                          child: ListView.builder(
-                            itemCount: searchResults.length,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                  title: Text(searchResults[index]));
-                            },
+                          child: Theme(
+                            data: ThemeData(
+                              primaryColor: const Color.fromARGB(255, 0, 0, 0),
+                              primaryColorDark:
+                                  const Color.fromARGB(255, 0, 0, 0),
+                            ),
+                            child: ListView.builder(
+                              itemCount: searchResults.length,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                    title: Text(searchResults[index]));
+                              },
+                            ),
                           ),
                         ),
                       ),
@@ -143,7 +150,7 @@ class _ProfesoresState extends State<Profesores> {
                     onPressed: () {},
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
-                        const Color.fromARGB(255, 0, 0, 0),
+                        const Color.fromARGB(255, 247, 215, 205),
                       ),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
@@ -151,10 +158,15 @@ class _ProfesoresState extends State<Profesores> {
                         ),
                       ),
                       textStyle: MaterialStateProperty.all(
-                        TextStyle(color: Colors.white),
+                        TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
                       ),
                     ),
-                    child: Text('Agregar'),
+                    child: Text(
+                      'Agregar',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ),
                   ),
                   SizedBox(width: 25),
                 ],
