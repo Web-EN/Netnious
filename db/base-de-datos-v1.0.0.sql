@@ -1,3 +1,9 @@
+CREATE TYPE roles_name AS ENUM (
+    'director',
+    'profesor',
+    'alumno'
+);
+
 CREATE TABLE "Clase-Horario" (
     "Horario_id" INT NOT NULL,
     "Clase_id" INT NOT NULL
@@ -54,7 +60,7 @@ CREATE TABLE "Clases" (
 
 CREATE TABLE "Roles" (
     "id" SERIAL PRIMARY KEY,
-    "rol" INT NOT NULL,
+    "rol" roles_name NOT NULL,
     "permisos" INT NOT NULL
 );
 

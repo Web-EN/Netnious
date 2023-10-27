@@ -1,7 +1,7 @@
-import 'package:Netnious/page-1/login.dart';
 import 'package:Netnious/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:Netnious/director/inicio_director.dart';
+import 'utils.dart';
+import '/page-1/login.dart';
 
 void main() => runApp(MyApp());
 
