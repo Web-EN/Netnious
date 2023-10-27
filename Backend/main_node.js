@@ -20,11 +20,6 @@ app.use((req, res, next) => {
 });
 
 //Rutas
-// app.get("/",(req, res) => {
-//   res.send("Hello");
-// });
-
-
 
 app.use(require("./Routes/login"));
 app.use(require("./Routes/director"));

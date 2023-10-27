@@ -4,10 +4,14 @@ const { Pool } = require("pg");
 
 const pool = new Pool({
     user: 'postgres',
-    host: 'localhost',
+    host: process.env.HOST,
     database: 'weben',
-    password: 'memoria',
+    password: process.env.PASSWORD,
     port: 5432,
+
+    //Test
+    // host: 'localhost',
+    // password: '',
 });
 
 const storage = multer.diskStorage({
