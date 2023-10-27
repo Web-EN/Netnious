@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'profesores.dart';
 
 class Menu extends StatelessWidget {
   @override
@@ -35,6 +34,17 @@ class Menu extends StatelessWidget {
               ),
               onTap: () {},
             ),
+            ListTile(
+              leading: Icon(Icons.home, color: Colors.white),
+              title: Text(
+                'Profesores',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17, // Establece el tamaño del texto
+                ),
+              ),
+              onTap: () {},
+            ),
             CustomExpansionTile(
               icon: Icon(Icons.app_registration, color: Colors.white),
               title: Text(
@@ -62,48 +72,6 @@ class Menu extends StatelessWidget {
                   leadingIcon: Icon(Icons.check, color: Colors.white),
                   title: Text(
                     'Visualizar',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            CustomExpansionTile(
-              icon: Icon(Icons.account_tree, color: Colors.white),
-              title: Text(
-                'Registro Académico',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                ),
-              ),
-              children: <Widget>[
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Asignar Fecha del Proyecto',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Asignar Fecha de Evaluaciones',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-                CustomListTile(
-                  leadingIcon: Icon(Icons.check, color: Colors.white),
-                  title: Text(
-                    'Registrar Asistencia',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 17,
