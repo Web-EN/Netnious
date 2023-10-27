@@ -2,29 +2,32 @@ require('dotenv').config();
 const { Client } = require("pg");
 const { getUserFromDatabase, generateAuthToken } = require('../auth');
 
+/* Comentado porque me di cuenta que no se puede reusar un Cliente, cosa que un Pool si se puede 
 const client = new Client({
     user: 'postgres',
     // host: process.env.HOST,
-    database: 'testapi', // weben
+    // database: "weben",
     // password: process.env.PASSWORD,
     port: 5432,
 
-    //Test local
+    //Test local mio
+    database: 'testapi', 
     host: 'localhost',
-    password: '',
-});
+    password: 'memoria',
+});*/
 
 const verifyLogin = async (req, res) => {
     const { username, password } = req.body;
-    // const client = new Client({
-    //     user: 'postgres',
-    //     // host: process.env.HOST,
-    //     host: 'localhost', // Test
-    //     database: 'testapi', // postgres
-    //     // password: process.env.PASSWORD,
-    //     password: 'memoria', // Test
-    //     port: 5432,
-    // }); Se crea un nuevo client en cada peticion POST a login
+    const client = new Client({
+        user: 'postgres',
+        // host: process.env.HOST, // Test
+        // database: 'weben', // postgres
+        // password: process.env.PASSWORD, // Test
+        port: 5432,
+        database: 'weben', 
+        host: 'localhost',
+        password: 'memoria',
+    });
 
     try {
         await client.connect();
