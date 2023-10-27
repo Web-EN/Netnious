@@ -1,11 +1,12 @@
 require('dotenv').config();
 const { Pool } = require("pg");
+const multer = require("multer");
 
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'weben',
-    password: '',
+    password: 'memoria',
     port: 5432,
 });
 
@@ -25,7 +26,17 @@ const createAnuncio = async (req, res) => {
 
 // 2) Menú (Director_Material)
 //  2.1) Documentos ver
-    // 
+    const getDocumentos = async (req, res) => {
+        const response = await pool.query('SELECT "nombre", "ruta_archivo" FROM public."Documento"');
+        res.send(response);
+        // Falta definir y mejorar esta parte
+
+        // const documento = response.rows[0];
+        // const nombre = documento.nombre;
+        // const ruta_archivo = documento.nombre;
+        // const archivo = fs.readFileSync(ruta_archivo);
+        // res.send(archivo);
+    }
 
 //  2.2) Documentos subir
     // upload.js
@@ -54,6 +65,7 @@ const getAlumnos = async (req, res) => {
 
 module.exports = {
     createAnuncio,
+    getDocumentos,
     getProfesores,
     getAlumnos
 }

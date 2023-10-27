@@ -20,8 +20,6 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage });
-//exports.upload = upload.single('testFile');
 
 const uploadFile = async (req, res) => {
     const file = req.file;
@@ -39,7 +37,7 @@ const uploadFile = async (req, res) => {
         }
         res.status(201).send(`Documento subido con éxito`);
     })
-}
+} // Usar Postman o Thunder Client
 
 module.exports = {
     uploadFile

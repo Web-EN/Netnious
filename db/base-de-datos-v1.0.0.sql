@@ -135,20 +135,6 @@ ALTER TABLE "Año y nivel del alumno" ADD CONSTRAINT "año y nivel del alumno_al
 ALTER TABLE "Periodos" ADD CONSTRAINT "periodos_año_id_foreign" FOREIGN KEY("año_id") REFERENCES "Año escolar"("id");
 ALTER TABLE "Clase-Alumno" ADD CONSTRAINT "clase_alumno_clase_id_foreign" FOREIGN KEY("Clase_id") REFERENCES "Clases"("id");
 
-INSERT INTO "Alumno" ("Nombres","Apellido Paterno","Apellido Materno","Documento de Identidad","Fecha de Nacimiento","Apoderado_id","Usuario_id") 
-VALUES ('AlumnoTest','TestPaterno','TestMaterno',888888,'2023-12-23',155,2323);
-
-CREATE TABLE "Alumno" (
-    "id" SERIAL PRIMARY KEY,
-    "Nombres" VARCHAR(255) NOT NULL,
-    "Apellido Paterno" VARCHAR(255) NOT NULL,
-    "Apellido Materno" VARCHAR(255) NOT NULL,
-    "Documento de Identidad" INT NOT NULL,
-    "Fecha de Nacimiento" DATE NOT NULL,
-    "Apoderado_id" INT NOT NULL,
-    "Usuario_id" INT NOT NULL
-);
-
 CREATE TABLE "Anuncio" (
     "id" SERIAL PRIMARY KEY,
     "mensaje" TEXT,
