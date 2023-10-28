@@ -14,10 +14,7 @@ const genToken = async (req, res) => {
       // res.cookie('sessionID', req.session.id, {
       //    maxAge: 10*60*1000,
       // });
-      res.status(200).json({
-        user,
-        sessionId: req.session.id,
-      });
+      res.send(req.session.id);
     } else {
       res.status(401).json({ message: "Credenciales incorrectas" });
     }

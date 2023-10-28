@@ -28,8 +28,8 @@ async function getUserFromDatabase(username, password, client) {
       return null;
     }
   } catch (error) {
-    console.error('Error al consultar la base de datos:', error);
-    throw error;
+    console.log('No existen esos datos');
+    return null;
   }
 }
 
