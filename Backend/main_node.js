@@ -2,6 +2,7 @@
 require('dotenv').config();
 //const { Client } = require('pg');
 const express = require('express');
+require("multer");
 //const { getUserFromDatabase, generateAuthToken } = require('./auth');
 
 //Inicializaciones
@@ -19,12 +20,11 @@ app.use((req, res, next) => {
 });
 
 //Rutas
-app.get("/",(req, res) => {
-  res.send("Hello");
-});
+
+app.use(require("./Routes/login"));
+app.use(require("./Routes/director"));
+app.use(require("./Routes/upload"));
 
 app.listen(PORT, () =>{
   console.log(`La aplicación está escuchando en el puerto ${PORT}`);
 });
-
-app.use(require("./Routes/login")); //Middleware de login
