@@ -2,7 +2,6 @@ require('dotenv').config();
 const { Client } = require("pg");
 const { getUserFromDatabase, generateAuthToken } = require('../auth');
 
-
 const verifyLogin = async (req, res) => {
     const { username, password } = req.body;
     const client = new Client({
@@ -11,13 +10,7 @@ const verifyLogin = async (req, res) => {
         database: 'weben',
         password: process.env.PASSWORD,
         port: 5432,
-
-        //Test
-        // database: 'weben', 
-        // host: 'localhost',
-        // password: '',
     });
-
     try {
         await client.connect();
         const user = await getUserFromDatabase(username, password, client);

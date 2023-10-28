@@ -1,6 +1,8 @@
+import 'package:Netnious/director/inicio_director.dart';
 import 'package:flutter/material.dart';
 import '/director/inicio_director.dart';
 import 'package:http/http.dart' as http;
+
 
 class Scene extends StatefulWidget {
   @override
@@ -123,7 +125,7 @@ class _SceneState extends State<Scene> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15*fem,
+                        fontSize: 14*ffem,
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w300,
                         height: 0,
@@ -193,7 +195,7 @@ class _SceneState extends State<Scene> {
                   width: 432 * fem,
                   height: 286 * fem,
                   child: Image.asset(
-                    'assets/page-1/images/vector-1.png',
+                    'assets/page-1/images/Vector1_upscaled.png',
                     width: 432 * fem,
                     height: 286 * fem,
                   ),
@@ -219,6 +221,7 @@ class _SceneState extends State<Scene> {
 
     if (response.statusCode == 200) {
       final token = response.body;
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Director()),);
       //Guarda el token si la conexión fue exitosa
       Navigator.push(
         context,
