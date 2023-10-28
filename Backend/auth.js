@@ -1,5 +1,3 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 // No es necesario crear una instancia de cliente aquí
 
@@ -35,21 +33,4 @@ async function getUserFromDatabase(username, password, client) {
   }
 }
 
-// Para generar token
-function generateAuthToken(user) {
-  const secretKey = crypto.randomBytes(32).toString('hex');
-
-  // Solo define el token
-  const payload = {
-    userId: user.id,
-    username: user.username,
-    // Se pueden incluir más datos
-  };
-
-  // Genera el token JWT con la información y la clave secreta
-  const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
-
-  return token;
-}
-
-module.exports = { getUserFromDatabase, generateAuthToken };
+module.exports = { getUserFromDatabase };

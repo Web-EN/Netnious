@@ -148,6 +148,7 @@ class _SceneState extends State<Scene> {
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   } else {
                     login();
+                    auth();
                   }
                 },
                 child: Text(
@@ -208,7 +209,20 @@ class _SceneState extends State<Scene> {
     );
   }
 
-  Future<void> login() async {
+  Future<void> auth() async {
+    final url = Uri.parse('http://localhost:3000/cooky');
+    final response = await http.get(
+      url,
+    );
+    print(response.statusCode);
+    if(response.statusCode == 200){
+      print('hola');
+    } else {
+      print('Error');
+    }
+  }
+
+  Future<bool> login() async {
     final url = Uri.parse('http://localhost:3000/login');
 
     final response = await http.post(
@@ -231,7 +245,7 @@ class _SceneState extends State<Scene> {
           context,
           MaterialPageRoute(builder: (context) => Director()),
         );
-      }
+      };
       // ESTE ES EL CAMBIO DE ESCENAS SEGÚN EL ROL
       // else if(rol == 2 || rol == 4){
       //   Navigator.push(
@@ -245,12 +259,14 @@ class _SceneState extends State<Scene> {
       //     MaterialPageRoute(builder: (context) => Estudiante()), //Cambiar por la página del estudiante
       //   );
       // }
+      return true;
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Información incorrecta'),
         ),
       );
+      return false;
     }
   }
 }

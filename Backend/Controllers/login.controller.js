@@ -1,8 +1,6 @@
 require('dotenv').config();
 const { Client } = require("pg");
-const bcrypt = require('bcryptjs');
-const { getUserFromDatabase, generateAuthToken } = require('../auth');
-
+const { getUserFromDatabase} = require('../auth');
 
 const verifyLogin = async (req, res) => {
     const client = new Client({
@@ -11,18 +9,13 @@ const verifyLogin = async (req, res) => {
         database: 'weben', // weben
         password: process.env.PASSWORD,
         port: 5432,
-        //Test local
-        // host: 'localhost',
-        // password: '',
     });
     const { username, password } = req.body;
     try {
         await client.connect();
         const user = await getUserFromDatabase(username, password, client);
         if (user) {
-        const token = generateAuthToken(user);
         res.status(200).json({
-            'token': token,
             user,
         });
         } else {
@@ -40,5 +33,5 @@ const verifyLogin = async (req, res) => {
 };
 
 module.exports = {
-    verifyLogin
+    verifyLogin,
 }
