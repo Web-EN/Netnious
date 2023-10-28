@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import '/director/inicio_director.dart';
-import 'package:http/http.dart' as http;
 
+import '/director/inicio_director.dart';
 
 class Scene extends StatefulWidget {
   @override
@@ -101,40 +99,40 @@ class _SceneState extends State<Scene> {
               ),
             ),
             Positioned(
-              left: 62*fem,
-              top: 243*fem,
-              child: Container(
-                width: 150*fem,
-                height: 51*fem,
-                padding: const EdgeInsets.symmetric(horizontal: 21,vertical: 9 ),
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1*fem),
-                    borderRadius: BorderRadius.circular(10),
+                left: 62 * fem,
+                top: 243 * fem,
+                child: Container(
+                  width: 150 * fem,
+                  height: 51 * fem,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 21, vertical: 9),
+                  clipBehavior: Clip.antiAlias,
+                  decoration: ShapeDecoration(
+                    color: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1 * fem),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Inicio de Seción',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14*ffem,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.w300,
-                        height: 0,
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Inicio de Seción',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15 * fem,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w300,
+                          height: 0,
+                        ),
+                      )
+                    ],
+                  ),
+                )),
             Positioned(
               left: 140 * fem,
               top: 566 * fem,
@@ -195,7 +193,7 @@ class _SceneState extends State<Scene> {
                   width: 432 * fem,
                   height: 286 * fem,
                   child: Image.asset(
-                    'assets/page-1/images/Vector1_upscaled.png',
+                    'assets/page-1/images/vector-1.png',
                     width: 432 * fem,
                     height: 286 * fem,
                   ),
@@ -208,64 +206,12 @@ class _SceneState extends State<Scene> {
     );
   }
 
-  Future<void> auth() async {
-    final url = Uri.parse('http://localhost:3000/cooky');
-    final response = await http.get(
-      url,
-    );
-
-    print(response.statusCode);
-    if(response.statusCode == 200){
-      print('hola');
-    } else {
-      print('Error');
-    }
-  }
-
   Future<void> login() async {
-    final url = Uri.parse('http://localhost:3000/login');
-    final response = await http.post(
-      url,
-      body: {
-        'username': _usuarioTextField, //Envía el nombre de usuario
-        'password': _passwordTextField, //Envía la contraseña
-      },
+    // No es necesario verificar la URL en este caso
+    // Simplemente ir a la siguiente página
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Director()),
     );
-
-    if (response.statusCode == 200) {
-      final token = response.body;
-      // print(token);
-      //Guarda el token si la conexión fue exitosa
-      Map<String, dynamic> jsonMap = json.decode(token);
-      print(jsonMap);
-      final rol = jsonMap['user']['id']['rol_id'];
-
-      if(rol == 1){
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Director()),
-        );
-      }
-      // else if(rol == 2 || rol == 4){
-      //   Navigator.push(
-      //     context,
-      //     MaterialPageRoute(builder: (context) => Profesor()), //Cambiar por la página del profesor
-      //   );
-      // }
-      // else if(rol == 3){
-      //   Navigator.push(
-      //     context,
-      //     MaterialPageRoute(builder: (context) => Estudiante()), //Cambiar por la página del estudiante
-      //   );
-      // }
-      // return true;
-      auth();
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Información incorrecta'),
-        ),
-      );
-    }
   }
 }
