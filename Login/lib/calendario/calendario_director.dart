@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:Login/calendario/event.dart';
+import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 
@@ -8,7 +8,10 @@ class CalendarioDirector extends StatelessWidget {
   Widget build(BuildContext contex) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Calendario'),
+          title: Text(
+            'Calendario',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
         body: Container(
             decoration: BoxDecoration(
