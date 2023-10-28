@@ -1,4 +1,4 @@
-import 'package:Netnious/director/inicio_director.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import '/director/inicio_director.dart';
 import 'package:http/http.dart' as http;
@@ -148,6 +148,7 @@ class _SceneState extends State<Scene> {
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   } else {
                     login();
+                    auth();
                   }
                 },
                 child: Text(
@@ -208,7 +209,20 @@ class _SceneState extends State<Scene> {
     );
   }
 
-  Future<void> login() async {
+  Future<void> auth() async {
+    final url = Uri.parse('http://localhost:3000/cooky');
+    final response = await http.get(
+      url,
+    );
+    print(response.statusCode);
+    if(response.statusCode == 200){
+      print('hola');
+    } else {
+      print('Error');
+    }
+  }
+
+  Future<bool> login() async {
     final url = Uri.parse('http://localhost:3000/login');
 
     final response = await http.post(
@@ -221,18 +235,38 @@ class _SceneState extends State<Scene> {
 
     if (response.statusCode == 200) {
       final token = response.body;
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Director()),);
+      // print(token);
       //Guarda el token si la conexión fue exitosa
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Director()),
-      );
+      Map<String, dynamic> jsonMap = json.decode(token);
+      final rol = jsonMap['user']['id']['rol_id'];
+
+      if(rol == 1){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Director()),
+        );
+      };
+      // ESTE ES EL CAMBIO DE ESCENAS SEGÚN EL ROL
+      // else if(rol == 2 || rol == 4){
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (context) => Profesor()), //Cambiar por la página del profesor
+      //   );
+      // }
+      // else if(rol == 3){
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (context) => Estudiante()), //Cambiar por la página del estudiante
+      //   );
+      // }
+      return true;
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Información incorrecta'),
         ),
       );
+      return false;
     }
   }
 }

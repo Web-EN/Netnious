@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Client } = require("pg");
-const { getUserFromDatabase, generateAuthToken } = require('../auth');
+const { getUserFromDatabase} = require('../auth');
 
 const verifyLogin = async (req, res) => {
     const { username, password } = req.body;
@@ -15,8 +15,9 @@ const verifyLogin = async (req, res) => {
         await client.connect();
         const user = await getUserFromDatabase(username, password, client);
         if (user) {
-        const token = generateAuthToken(user);
-        res.status(200).json({ token });
+        res.status(200).json({
+            user,
+        });
         } else {
         res.status(401).json({ message: "Credenciales incorrectas" });
         }
@@ -24,10 +25,13 @@ const verifyLogin = async (req, res) => {
         console.error('Error al manejar la solicitud:', error);
         res.status(500).json({ message: "Error en el servidor" });
     } finally {
-        await client.end();
+        if (client._connected) {
+            await client.end();
+            console.log('Cliente desconectado');
+        }
     }
 };
 
 module.exports = {
-    verifyLogin
+    verifyLogin,
 }
