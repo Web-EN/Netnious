@@ -13,9 +13,9 @@ const pool = new Pool({
     // password: '',
 });
 
-// 1) Menú (Director_inicio) 
+// 1) Menú (Director_inicio)
 //  1.1) Mensajes y anuncios
-const createAnuncio = async (req, res) => { 
+const createAnuncio = async (req, res) => {
     const { contenido, fecha } = req.body;
     const response = await pool.query('INSERT INTO public."Anuncio" ("mensaje", "fecha") VALUES ($1, $2)', [contenido, fecha]);
     console.log(response);
@@ -45,7 +45,7 @@ const createAnuncio = async (req, res) => {
     // upload.js
 
 // 3) Menú (Director_Profesor)
-const getProfesores = async (req, res) => { 
+const getProfesores = async (req, res) => {
     const response = await pool.query('SELECT "Nombres", "Apellidos" FROM public."Profesores"');
     //console.log(response.rows)
     //res.send("Get Alumnos (profesores)")

@@ -1,7 +1,5 @@
 const session = require('express-session');
 const express = require('express');
-const pgSession = require('connect-pg-simple')(session);
-const pg = require('pg');
 
 const app = express();
 app.use(express.json());
@@ -13,7 +11,13 @@ const genToken = async (req, res) => {
       req.session.isAuth = true;
       console.log('session creada');
       console.log(req.session.id);
-      res.send(req.session.id);
+      // res.cookie('sessionID', req.session.id, {
+      //    maxAge: 10*60*1000,
+      // });
+      res.status(200).json({
+        user,
+        sessionId: req.session.id,
+      });
     } else {
       res.status(401).json({ message: "Credenciales incorrectas" });
     }

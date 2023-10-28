@@ -214,6 +214,7 @@ class _SceneState extends State<Scene> {
     final response = await http.get(
       url,
     );
+
     print(response.statusCode);
     if(response.statusCode == 200){
       print('hola');
@@ -224,7 +225,6 @@ class _SceneState extends State<Scene> {
 
   Future<bool> login() async {
     final url = Uri.parse('http://localhost:3000/login');
-
     final response = await http.post(
       url,
       body: {
@@ -238,6 +238,7 @@ class _SceneState extends State<Scene> {
       // print(token);
       //Guarda el token si la conexión fue exitosa
       Map<String, dynamic> jsonMap = json.decode(token);
+      print(jsonMap);
       final rol = jsonMap['user']['id']['rol_id'];
 
       if(rol == 1){

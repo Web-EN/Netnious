@@ -1,5 +1,7 @@
 require('dotenv').config();
 const { Client } = require("pg");
+const session = require('express-session');
+const express = require('express');
 const { getUserFromDatabase} = require('../auth');
 
 const verifyLogin = async (req, res) => {
@@ -14,9 +16,11 @@ const verifyLogin = async (req, res) => {
     try {
         await client.connect();
         const user = await getUserFromDatabase(username, password, client);
+        req.session.isAuth = true;
         if (user) {
         res.status(200).json({
             user,
+            sessionId: req.session.id,
         });
         } else {
         res.status(401).json({ message: "Credenciales incorrectas" });
