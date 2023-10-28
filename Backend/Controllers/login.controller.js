@@ -3,14 +3,14 @@ const { Client } = require("pg");
 const { getUserFromDatabase} = require('../auth');
 
 const verifyLogin = async (req, res) => {
+    const { username, password } = req.body;
     const client = new Client({
         user: 'postgres',
         host: process.env.HOST,
-        database: 'weben', // weben
+        database: 'weben',
         password: process.env.PASSWORD,
         port: 5432,
     });
-    const { username, password } = req.body;
     try {
         await client.connect();
         const user = await getUserFromDatabase(username, password, client);

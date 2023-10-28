@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const pgSession = require('connect-pg-simple')(session);
 const pg = require('pg');
+require("multer");
 
 //Inicializaciones
 const app = express();
@@ -17,10 +18,6 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
-});
-
-app.listen(PORT, () =>{
-  console.log(`La aplicación está escuchando en el puerto ${PORT}`);
 });
 
 // Cookies, no supe como trasladarlo a otro archivo :(
@@ -48,10 +45,12 @@ app.use(session({
     secure: true,
 }));
 
-// Middleware de autenticación
+//Rutas
 app.use(require("./Routes/login"));
-
+app.use(require("./Routes/director"));
+app.use(require("./Routes/upload"));
 app.use(require("./Routes/cooky"));
 
-
-// app.use(require("./Routes/usuario")); //Middleware de usuario
+app.listen(PORT, () =>{
+  console.log(`La aplicación está escuchando en el puerto ${PORT}`);
+});
