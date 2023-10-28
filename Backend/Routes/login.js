@@ -7,9 +7,7 @@ const { verifyLogin } = require("../Controllers/login.controller");
 //Login
 router.post("/login", verifyLogin);
 
-//Alumno
-
-    const GetUsers = async (req, res) => {
+const GetUsers = async (req, res) => {
   const response = await pool.query('Select * FROM users');
   res.status(200).json(response.rows)
 };
