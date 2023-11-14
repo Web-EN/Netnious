@@ -346,8 +346,7 @@ class _SceneState extends State<Director> {
           ],
         ),
       ),
-    );
-        )
+    ))
     );
   }
 }

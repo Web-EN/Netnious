@@ -1,7 +1,10 @@
+import 'package:Netnious/director/registro_notas.dart';
 import 'package:Netnious/page-1/login.dart';
 import 'package:Netnious/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:Netnious/director/inicio_director.dart';
+import 'package:Netnious/profesores/Rendimiento_bimestral.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: SingleChildScrollView(
-          child: Scene(),
+          child: Rendimiento(),
         ),
       ),
     );
