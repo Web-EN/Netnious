@@ -14,6 +14,15 @@ const PORT = process.env.PORT || 3000;
 
 // Permite todos las peticiones CORS
 app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:51318'); // Cambiar esta dirección de ser necesario
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
+//Rutas
+app.get("/",(req, res) => {
+  res.send("Hello");
   res.header('Access-Control-Allow-Origin', 'http://localhost:59465'); // Cambiar esta dirección de ser necesario
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
