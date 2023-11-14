@@ -1,3 +1,9 @@
+CREATE TYPE roles_name AS ENUM (
+    'director',
+    'profesor',
+    'alumno'
+);
+
 CREATE TABLE "Clase-Horario" (
     "Horario_id" INT NOT NULL,
     "Clase_id" INT NOT NULL
@@ -54,7 +60,7 @@ CREATE TABLE "Clases" (
 
 CREATE TABLE "Roles" (
     "id" SERIAL PRIMARY KEY,
-    "rol" INT NOT NULL,
+    "rol" roles_name NOT NULL,
     "permisos" INT NOT NULL
 );
 
@@ -128,3 +134,15 @@ ALTER TABLE "Clases" ADD CONSTRAINT "clases_profesor_id_foreign" FOREIGN KEY("Pr
 ALTER TABLE "Año y nivel del alumno" ADD CONSTRAINT "año y nivel del alumno_alumno_id_foreign" FOREIGN KEY("Alumno_id") REFERENCES "Alumno"("id");
 ALTER TABLE "Periodos" ADD CONSTRAINT "periodos_año_id_foreign" FOREIGN KEY("año_id") REFERENCES "Año escolar"("id");
 ALTER TABLE "Clase-Alumno" ADD CONSTRAINT "clase_alumno_clase_id_foreign" FOREIGN KEY("Clase_id") REFERENCES "Clases"("id");
+
+CREATE TABLE "Anuncio" (
+    "id" SERIAL PRIMARY KEY,
+    "mensaje" TEXT,
+    "fecha" DATE NOT NULL
+);
+
+CREATE TABLE "Documento" (
+    "id" SERIAL PRIMARY KEY,
+    "nombre" VARCHAR(255) NOT NULL,
+    "ruta_archivo" VARCHAR(255) NOT NULL
+);

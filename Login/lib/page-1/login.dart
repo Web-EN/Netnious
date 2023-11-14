@@ -1,5 +1,6 @@
-import 'package:Netnious/director/inicio_director.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import '/director/inicio_director.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -207,9 +208,22 @@ class _SceneState extends State<Scene> {
     );
   }
 
+  Future<void> auth() async {
+    final url = Uri.parse('http://localhost:3000/cooky');
+    final response = await http.get(
+      url,
+    );
+
+    print(response.statusCode);
+    if(response.statusCode == 200){
+      print('hola');
+    } else {
+      print('Error');
+    }
+  }
+
   Future<void> login() async {
     final url = Uri.parse('http://localhost:3000/login');
-
     final response = await http.post(
       url,
       body: {
@@ -220,8 +234,32 @@ class _SceneState extends State<Scene> {
 
     if (response.statusCode == 200) {
       final token = response.body;
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Director()),);
+      // print(token);
       //Guarda el token si la conexión fue exitosa
+      Map<String, dynamic> jsonMap = json.decode(token);
+      print(jsonMap);
+      final rol = jsonMap['user']['id']['rol_id'];
+
+      if(rol == 1){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Director()),
+        );
+      }
+      // else if(rol == 2 || rol == 4){
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (context) => Profesor()), //Cambiar por la página del profesor
+      //   );
+      // }
+      // else if(rol == 3){
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (context) => Estudiante()), //Cambiar por la página del estudiante
+      //   );
+      // }
+      // return true;
+      auth();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
