@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'profesores/pruebita.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
     );
@@ -14,16 +16,18 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           children: <Widget>[
             Text(
               'NETNIOUS',
               style: TextStyle(
-                color: const Color.fromARGB(255, 0, 0, 0),
+                color: Color.fromARGB(255, 0, 0, 0),
                 fontSize: 17,
               ),
             ),
@@ -31,7 +35,7 @@ class HomeScreen extends StatelessWidget {
         ),
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         toolbarHeight: 60.0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Center(
         child: Image.network(
@@ -40,7 +44,7 @@ class HomeScreen extends StatelessWidget {
           height: 300,
         ),
       ),
-      endDrawer: Menu(),
+      endDrawer: const Menu(),
     );
   }
 }

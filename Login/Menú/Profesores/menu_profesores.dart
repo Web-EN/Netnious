@@ -62,18 +62,7 @@ class Menu extends StatelessWidget {
             ),
             onTap: () {},
           ),
-          ListTile(
-            leading: const Icon(Icons.person, color: Colors.white),
-            title: const Text(
-              'Profesores',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17,
-              ),
-            ),
-            onTap: () {},
-          ),
-          CustomExpansionTile(
+          const CustomExpansionTile(
             icon: Icon(Icons.folder_open, color: Colors.white),
             title: Text(
               'Reportes y Registros',
@@ -83,6 +72,19 @@ class Menu extends StatelessWidget {
               ),
             ),
             children: <Widget>[
+              CustomListTile(
+                leadingIcon: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  'Registrar Notas',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
               CustomListTile(
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
@@ -95,16 +97,89 @@ class Menu extends StatelessWidget {
               ),
             ],
           ),
-          ListTile(
-            leading: const Icon(Icons.group, color: Colors.white),
-            title: const Text(
+          const CustomExpansionTile(
+            icon: Icon(Icons.library_add_check, color: Colors.white),
+            title: Text(
+              'Registro Académico',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+              ),
+            ),
+            children: <Widget>[
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Asignar Fecha del Proyecto',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Asignar Fecha de Evaluaciones',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Registrar Asistencia',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const CustomExpansionTile(
+            icon: Icon(Icons.group, color: Colors.white),
+            title: Text(
               'Visualizar Análisis del Alumno',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            children: <Widget>[
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Ver Reporte de Notas',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Ver Reporte de Asistencias',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              CustomListTile(
+                leadingIcon: Icon(Icons.check, color: Colors.white),
+                title: Text(
+                  'Ver Informes de Clases',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+            ],
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app, color: Colors.white),
@@ -136,10 +211,10 @@ class CustomExpansionTile extends StatefulWidget {
   });
 
   @override
-  _CustomExpansionTileState createState() => _CustomExpansionTileState();
+  CustomExpansionTileState createState() => CustomExpansionTileState();
 }
 
-class _CustomExpansionTileState extends State<CustomExpansionTile> {
+class CustomExpansionTileState extends State<CustomExpansionTile> {
   bool _isExpanded = false;
 
   @override

@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'pruebita.dart';
 
 class Profesores extends StatefulWidget {
+  const Profesores({super.key});
+
   @override
-  _ProfesoresState createState() => _ProfesoresState();
+  ProfesoresState createState() => ProfesoresState();
 }
 
-class _ProfesoresState extends State<Profesores> {
-  TextEditingController _searchController = TextEditingController();
+class ProfesoresState extends State<Profesores> {
+  final TextEditingController _searchController = TextEditingController();
   List<String> profesores = [
     'Maria Elena',
     'Salinas',
@@ -32,20 +34,20 @@ class _ProfesoresState extends State<Profesores> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           children: <Widget>[
             Text(
               'NETNIOUS',
               style: TextStyle(
-                color: const Color.fromARGB(255, 0, 0, 0),
+                color: Color.fromARGB(255, 0, 0, 0),
                 fontSize: 17,
               ),
             ),
           ],
         ),
-        backgroundColor: Color.fromARGB(255, 235, 235, 235),
+        backgroundColor: const Color.fromARGB(255, 235, 235, 235),
         toolbarHeight: 60.0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -56,11 +58,11 @@ class _ProfesoresState extends State<Profesores> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 30, top: 30),
+              const Padding(
+                padding: EdgeInsets.only(left: 30, top: 30),
                 child: Text('Profesores: ', style: TextStyle(fontSize: 20)),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: Container(
                   width: containerWidth,
@@ -72,7 +74,7 @@ class _ProfesoresState extends State<Profesores> {
                   ),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Container(
                         width: double.infinity,
                         height: 40,
@@ -103,7 +105,7 @@ class _ProfesoresState extends State<Profesores> {
                                   onChanged: (text) {
                                     updateSearchResults();
                                   },
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     hintText: 'Buscar',
                                     border: InputBorder.none,
                                   ),
@@ -113,7 +115,7 @@ class _ProfesoresState extends State<Profesores> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Container(
                         width: double.infinity,
                         height: 180,
@@ -122,19 +124,12 @@ class _ProfesoresState extends State<Profesores> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Scrollbar(
-                          child: Theme(
-                            data: ThemeData(
-                              primaryColor: const Color.fromARGB(255, 0, 0, 0),
-                              primaryColorDark:
-                                  const Color.fromARGB(255, 0, 0, 0),
-                            ),
-                            child: ListView.builder(
-                              itemCount: searchResults.length,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                    title: Text(searchResults[index]));
-                              },
-                            ),
+                          child: ListView.builder(
+                            itemCount: searchResults.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                  title: Text(searchResults[index]));
+                            },
                           ),
                         ),
                       ),
@@ -142,7 +137,7 @@ class _ProfesoresState extends State<Profesores> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -158,24 +153,24 @@ class _ProfesoresState extends State<Profesores> {
                         ),
                       ),
                       textStyle: MaterialStateProperty.all(
-                        TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
+                        const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Agregar',
                       style: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                   ),
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
                 ],
               ),
             ],
           );
         },
       ),
-      endDrawer: Menu(),
+      endDrawer: const Menu(),
     );
   }
 }

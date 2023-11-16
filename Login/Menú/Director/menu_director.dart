@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
-import 'profesores.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: HomeScreen(),
+    );
+  }
+}
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -59,16 +71,9 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        Profesores()), // Reemplaza 'ProfesoresScreen' con el nombre correcto de tu pantalla en profesores.dart
-              );
-            },
+            onTap: () {},
           ),
-          CustomExpansionTile(
+          const CustomExpansionTile(
             icon: Icon(Icons.folder_open, color: Colors.white),
             title: Text(
               'Reportes y Registros',
@@ -131,10 +136,10 @@ class CustomExpansionTile extends StatefulWidget {
   });
 
   @override
-  _CustomExpansionTileState createState() => _CustomExpansionTileState();
+  CustomExpansionTileState createState() => CustomExpansionTileState();
 }
 
-class _CustomExpansionTileState extends State<CustomExpansionTile> {
+class CustomExpansionTileState extends State<CustomExpansionTile> {
   bool _isExpanded = false;
 
   @override
