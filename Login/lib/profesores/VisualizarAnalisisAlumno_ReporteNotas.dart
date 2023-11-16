@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Image.asset('assets/page-1/images/INGENIUS_logo2.png'),
       ),
-      body: Rendimiento_bimestral(),
+      body: Reporte_notas(),
       endDrawer: const Menu(),
     );
   }
@@ -275,67 +275,32 @@ class CustomListTile extends StatelessWidget {
     );
   }
 }
-
-
-class Rendimiento_bimestral extends StatefulWidget {
+class Reporte_notas extends StatefulWidget{
   @override
-  _RendimientoState createState() => _RendimientoState();
+  _ReporteState createState() => _ReporteState();
 }
 
-class _RendimientoState extends State<Rendimiento_bimestral> {
-  final TextEditingController _searchController = TextEditingController();
-  List<String> alumnos = [
-    'Diego',
-    'David',
-    'Leonid',
-    'Mateo',
-    'Franz',
-  ];
-
+class  _ReporteState extends State<Reporte_notas>{
+    final TextEditingController _searchController = TextEditingController();
+  List<String> alumnos = ['Diego', 'David', 'Leonid', 'Mateo', 'Franz'];
   List<String> searchResults = [];
+  bool _showContainer = false;
+  String _selectedAlumno = '';
 
   void updateSearchResults() {
     setState(() {
       searchResults = alumnos
-          .where((alumno) => alumno
-              .toLowerCase()
-              .contains(_searchController.text.toLowerCase()))
+          .where((alumno) =>
+              alumno.toLowerCase().contains(_searchController.text.toLowerCase()))
           .toList();
     });
   }
 
-  void abrirMensajeDialog(BuildContext context, String alumno) {
-    TextEditingController mensajeController = TextEditingController();
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Mensaje para $alumno'),
-          content: TextField(
-            controller: mensajeController,
-            decoration: InputDecoration(
-              hintText: 'Escribe tu mensaje...',
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Cancelar', style: TextStyle(fontSize: 20)),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: Text('Enviar', style: TextStyle(fontSize: 20)),
-              onPressed: () {
-                // Aquí puedes manejar el mensaje, por ejemplo, imprimirlo en la consola
-                print('Mensaje para $alumno: ${mensajeController.text}');
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
+  void mostrarDetallesAlumno(String alumno) {
+    setState(() {
+      _selectedAlumno = alumno;
+      _showContainer = true;
+    });
   }
 
   @override
@@ -356,13 +321,13 @@ class _RendimientoState extends State<Rendimiento_bimestral> {
         child: Stack(
           children:[
         Positioned(
-      top: 82 * fem,
+      top: 10 * fem,
       left: 27 * fem,
-      child: Text('Alumnos en el aula:', style: TextStyle(fontSize: 20*fem)),
+      child: Text('Alumnos', style: TextStyle(fontSize: 20*fem)),
         ),
       Positioned(
         left: 27*fem,
-        top: 112*fem,
+        top: 55*fem,
         child: Container(
           width: 376*fem,
           height: 252 *fem,
@@ -436,35 +401,70 @@ class _RendimientoState extends State<Rendimiento_bimestral> {
                   ),
           ),
           Positioned(
-            left: 14*fem,
-            top: 81*fem,
-            child: Container(
-                    width: 347*fem,
-                    height: 146*fem,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(20*fem),
+                      left: 14 * fem,
+                      top: 81 * fem,
+                      child: Container(
+                        width: 347 * fem,
+                        height: 146 * fem,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          borderRadius: BorderRadius.circular(20 * fem),
+                        ),
+                        child: Scrollbar(
+                          controller: ScrollController(),
+                          child: ListView.builder(
+                            itemCount: searchResults.length,
+                            itemBuilder: (context, index) {
+                              return InkWell(
+                                onTap: () {
+                                  mostrarDetallesAlumno(searchResults[index]);
+                                },
+                                child: ListTile(
+                                  title: Text(searchResults[index]),
+                                ),
+                              );
+                            },
                           ),
-                            child: Scrollbar(
-                              controller: ScrollController(),
-                                child: ListView.builder(
-                                itemCount: searchResults.length,
-                                controller: ScrollController(),
-                              itemBuilder: (context, index) {
-                                return InkWell(
-                                  onTap: () {
-                                 abrirMensajeDialog(context, searchResults[index]);
-                              },
-                            child: ListTile(title: Text(searchResults[index])),
-                          );
-                        },
+                        ),
                       ),
                     ),
-                  ),
-          ),
           
         ]),),
       ),
+      if (_showContainer)
+                Positioned(
+                  left: 0,
+                  bottom: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _showContainer = false;
+                      });
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
+                      color: Colors.black.withOpacity(0.5),
+                      child: Center(
+                        child: Container(
+                          width: 300 * fem,
+                          height: 200 * fem,
+                          color: Colors.white,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                _selectedAlumno,
+                                style: TextStyle(fontSize: 24 * fem),
+                              ),
+                              // Puedes agregar más información del alumno aquí si lo deseas
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
   Positioned(
               // vector1G2W (3:103)
               left: 0 * fem,
@@ -481,6 +481,12 @@ class _RendimientoState extends State<Rendimiento_bimestral> {
                 ),
               ),
             ),
+            Positioned(
+      top: 340 * fem,
+      left: 27 * fem,
+      child: Text('Reporte de notas', style: TextStyle(fontSize: 20*fem)),
+        ),
+        
             ]
             
             ),
@@ -492,4 +498,3 @@ class _RendimientoState extends State<Rendimiento_bimestral> {
 
   }
 }
-
