@@ -432,55 +432,68 @@ class  _ReporteState extends State<Reporte_notas>{
         ]),),
       ),
       if (_showContainer)
-                Positioned(
-                  left: 0,
-                  bottom: 0,
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _showContainer = false;
-                      });
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      color: Colors.black.withOpacity(0.5),
-                      child: Center(
-                        child: Container(
-                          width: 300 * fem,
-                          height: 200 * fem,
-                          color: Colors.white,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                _selectedAlumno,
-                                style: TextStyle(fontSize: 24 * fem),
-                              ),
-                              // Puedes agregar más información del alumno aquí si lo deseas
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-  Positioned(
-              // vector1G2W (3:103)
-              left: 0 * fem,
-              top: 705 * fem,
-              child: Align(
-                child: SizedBox(
-                  width: 432 * fem,
-                  height: 286 * fem,
-                  child: Image.asset(
-                    'assets/page-1/images/Vector_4_upscaled.png',
-                    width: 432 * fem,
-                    height: 286 * fem,
-                  ),
-                ),
-              ),
+  Stack(
+  children: [
+    // Imagen
+    Positioned(
+      left: 0 * fem,
+      top: 705 * fem,
+      child: Align(
+        child: SizedBox(
+          width: 432 * fem,
+          height: 286 * fem,
+          child: Image.asset(
+            'assets/page-1/images/Vector_4_upscaled.png',
+            width: 432 * fem,
+            height: 286 * fem,
+          ),
+        ),
+      ),
+    ),
+    // Contenedor delante de la imagen
+    Positioned(
+      left: 27 * fem,
+      top: 390 * fem, // Ajusta la posición del contenedor
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            _showContainer = false;
+          });
+        },
+        child: Container(
+          width: 376 * fem,
+          height: 461 * fem,
+          decoration: ShapeDecoration(
+            color: Color(0xFFF7D7CD),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10 * fem),
             ),
+            shadows: [
+              BoxShadow(
+                color: Color(0x3F000000),
+                blurRadius: 4 * fem,
+                offset: Offset(0, 4 * fem),
+                spreadRadius: 0,
+              )
+            ],
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  _selectedAlumno,
+                  style: TextStyle(fontSize: 24 * fem),
+                ),
+                // Puedes agregar más información del alumno aquí si lo deseas
+              ],
+            ),
+          ),
+        ),
+      ),
+    ),
+  ],
+),
             Positioned(
       top: 340 * fem,
       left: 27 * fem,
