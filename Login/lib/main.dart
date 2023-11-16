@@ -1,4 +1,4 @@
-import 'package:Login/profesores/asignar_Fecha_Proyecto/asignarFechaProyecto.dart';
+import 'package:Login/page-1/login.dart';
 import 'package:flutter/material.dart';
 
 import 'utils.dart';
@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Color.fromRGBO(247, 215, 205, 1)),
         useMaterial3: true,
       ),
-      home: AsignarFechaProyecto(),
+      home: Scaffold(
+        body: Scene(),
+      ),
     );
   }
 }
