@@ -1,6 +1,7 @@
+import 'package:Login/page-1/login.dart';
 import 'package:flutter/material.dart';
+
 import 'utils.dart';
-import '/page-1/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,12 +13,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       scrollBehavior: MyCustomScrollBehavior(),
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromRGBO(247, 215, 205, 1)),
+        useMaterial3: true,
       ),
       home: Scaffold(
-        body: SingleChildScrollView(
-          child: Scene(),
-        ),
+        body: Scene(),
       ),
     );
   }

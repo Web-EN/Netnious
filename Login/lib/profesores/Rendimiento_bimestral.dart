@@ -1,4 +1,4 @@
-import 'package:Netnious/utils.dart';
+import 'package:Login/utils.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const Rendimiento());
@@ -9,11 +9,10 @@ class Rendimiento extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter',
-      debugShowCheckedModeBanner: false,
-      scrollBehavior: MyCustomScrollBehavior(),
-      home:  HomeScreen()
-        );
+        title: 'Flutter',
+        debugShowCheckedModeBanner: false,
+        scrollBehavior: MyCustomScrollBehavior(),
+        home: HomeScreen());
   }
 }
 
@@ -276,7 +275,6 @@ class CustomListTile extends StatelessWidget {
   }
 }
 
-
 class Rendimiento_bimestral extends StatefulWidget {
   @override
   _RendimientoState createState() => _RendimientoState();
@@ -344,81 +342,79 @@ class _RendimientoState extends State<Rendimiento_bimestral> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
+        body: SingleChildScrollView(
+            child: Container(
       width: double.infinity,
       child: Container(
         width: double.infinity,
-        height: 932*fem,
+        height: 932 * fem,
         decoration: BoxDecoration(
           color: Color(0xffebebeb),
         ),
-        child: Stack(
-          children:[
-        Positioned(
-      top: 82 * fem,
-      left: 27 * fem,
-      child: Text('Alumnos en el aula:', style: TextStyle(fontSize: 20*fem)),
-        ),
-      Positioned(
-        left: 27*fem,
-        top: 112*fem,
-        child: Container(
-          width: 376*fem,
-          height: 252 *fem,
-          child: Stack(
-        children: [
+        child: Stack(children: [
           Positioned(
-            left: 0*fem,
-            top: 0*fem,
-            child: Container(
-        width: 376 * fem,
-        height: 252 * fem,
-        padding: const EdgeInsets.all(20),
-        decoration: ShapeDecoration(
-          color: const Color(0xFFF7D7CD),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10*fem),
-          ),
-          shadows: [
-            BoxShadow(
-              color: Color(0x3F000000),
-              blurRadius: 4*fem,
-              offset:Offset(0,4),
-              spreadRadius: 0*fem,
-            )
-          ],
-          
-        ),)
+            top: 82 * fem,
+            left: 27 * fem,
+            child: Text('Alumnos en el aula:',
+                style: TextStyle(fontSize: 20 * fem)),
           ),
           Positioned(
-            left: 14*fem,
-            top: 28*fem,
+            left: 27 * fem,
+            top: 112 * fem,
             child: Container(
-                    width: 347*fem,
-                    height: 35*fem,
+              width: 376 * fem,
+              height: 252 * fem,
+              child: Stack(children: [
+                Positioned(
+                    left: 0 * fem,
+                    top: 0 * fem,
+                    child: Container(
+                      width: 376 * fem,
+                      height: 252 * fem,
+                      padding: const EdgeInsets.all(20),
+                      decoration: ShapeDecoration(
+                        color: const Color(0xFFF7D7CD),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10 * fem),
+                        ),
+                        shadows: [
+                          BoxShadow(
+                            color: Color(0x3F000000),
+                            blurRadius: 4 * fem,
+                            offset: Offset(0, 4),
+                            spreadRadius: 0 * fem,
+                          )
+                        ],
+                      ),
+                    )),
+                Positioned(
+                  left: 14 * fem,
+                  top: 28 * fem,
+                  child: Container(
+                    width: 347 * fem,
+                    height: 35 * fem,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(20*fem),
+                      borderRadius: BorderRadius.circular(20 * fem),
                     ),
                     child: Row(
                       children: <Widget>[
                         SizedBox(
-                          width: 40*fem,
-                          height: 40*fem,
+                          width: 40 * fem,
+                          height: 40 * fem,
                           child: InkWell(
                             onTap: updateSearchResults,
                             child: Icon(
                               Icons.search,
-                              size: 30*fem,
+                              size: 30 * fem,
                             ),
                           ),
                         ),
                         Expanded(
                           flex: 2,
                           child: SizedBox(
-                            width: 10*fem,
-                            height: 30*fem,
+                            width: 10 * fem,
+                            height: 30 * fem,
                             child: TextField(
                               controller: _searchController,
                               onChanged: (text) {
@@ -434,62 +430,55 @@ class _RendimientoState extends State<Rendimiento_bimestral> {
                       ],
                     ),
                   ),
-          ),
-          Positioned(
-            left: 14*fem,
-            top: 81*fem,
-            child: Container(
-                    width: 347*fem,
-                    height: 146*fem,
+                ),
+                Positioned(
+                  left: 14 * fem,
+                  top: 81 * fem,
+                  child: Container(
+                    width: 347 * fem,
+                    height: 146 * fem,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(20*fem),
-                          ),
-                            child: Scrollbar(
-                              controller: ScrollController(),
-                                child: ListView.builder(
-                                itemCount: searchResults.length,
-                                controller: ScrollController(),
-                              itemBuilder: (context, index) {
-                                return InkWell(
-                                  onTap: () {
-                                 abrirMensajeDialog(context, searchResults[index]);
-                              },
+                      borderRadius: BorderRadius.circular(20 * fem),
+                    ),
+                    child: Scrollbar(
+                      controller: ScrollController(),
+                      child: ListView.builder(
+                        itemCount: searchResults.length,
+                        controller: ScrollController(),
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              abrirMensajeDialog(context, searchResults[index]);
+                            },
                             child: ListTile(title: Text(searchResults[index])),
                           );
                         },
                       ),
                     ),
                   ),
+                ),
+              ]),
+            ),
           ),
-          
-        ]),),
-      ),
-  Positioned(
-              // vector1G2W (3:103)
-              left: 0 * fem,
-              top: 705 * fem,
-              child: Align(
-                child: SizedBox(
+          Positioned(
+            // vector1G2W (3:103)
+            left: 0 * fem,
+            top: 705 * fem,
+            child: Align(
+              child: SizedBox(
+                width: 432 * fem,
+                height: 286 * fem,
+                child: Image.asset(
+                  'assets/page-1/images/Vector_4_upscaled.png',
                   width: 432 * fem,
                   height: 286 * fem,
-                  child: Image.asset(
-                    'assets/page-1/images/Vector_4_upscaled.png',
-                    width: 432 * fem,
-                    height: 286 * fem,
-                  ),
                 ),
               ),
             ),
-            ]
-            
-            ),
-            
-        ),
-      )
-      )
-    );
-
+          ),
+        ]),
+      ),
+    )));
   }
 }
-
