@@ -9,17 +9,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter',
-      debugShowCheckedModeBanner: false,
-      scrollBehavior: MyCustomScrollBehavior(),
-      theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromRGBO(247, 215, 205, 1)),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        body: Scene(),
-      ),
-    );
+        title: 'Flutter',
+        debugShowCheckedModeBanner: false,
+        scrollBehavior: MyCustomScrollBehavior(),
+        theme: ThemeData(
+          colorScheme:
+              ColorScheme.fromSeed(seedColor: Color.fromRGBO(247, 215, 205, 1)),
+          useMaterial3: true,
+        ),
+        home: Scaffold(
+          body: Scene(),
+        ));
   }
 }
