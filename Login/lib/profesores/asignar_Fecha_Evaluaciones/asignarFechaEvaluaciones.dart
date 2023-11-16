@@ -1,8 +1,9 @@
-import 'package:Login/profesores/asignar_Fecha_Proyecto/sources.dart';
 import 'package:flutter/material.dart';
 
-class AsignarFechaProyecto extends StatelessWidget {
-  const AsignarFechaProyecto({Key? key}) : super(key: key);
+import 'sourcesEvaluations.dart';
+
+class AsignarFechaEvaluaciones extends StatelessWidget {
+  const AsignarFechaEvaluaciones({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +23,18 @@ class AsignarFechaProyecto extends StatelessWidget {
                 fit: BoxFit.contain,
                 alignment: Alignment.bottomCenter)),
         alignment: Alignment.topCenter,
-        child: ContainerAsignarFechaProyecto(),
+        child: ContainerAsignarFechaEvaluaciones(),
       ),
     );
   }
 }
 
-class ContainerAsignarFechaProyecto extends StatelessWidget {
-  const ContainerAsignarFechaProyecto({Key? key}) : super(key: key);
+class ContainerAsignarFechaEvaluaciones extends StatelessWidget {
+  const ContainerAsignarFechaEvaluaciones({super.key});
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -44,7 +44,7 @@ class ContainerAsignarFechaProyecto extends StatelessWidget {
             child: Column(
               children: [
                 SubTitulo(subTitulo: "Fecha de proyecto"),
-                BuscarCurso(),
+                BuscarCursoEvaluacion(),
               ],
             ),
           ),
