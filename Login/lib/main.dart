@@ -17,8 +17,6 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSeed(seedColor: Color.fromRGBO(247, 215, 205, 1)),
           useMaterial3: true,
         ),
-        home: Scaffold(
-          body: Scene(),
-        ));
+        home: Scene());
   }
 }
