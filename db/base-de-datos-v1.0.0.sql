@@ -118,6 +118,20 @@ CREATE TABLE "Usuarios" (
     "Rol_id" INT NOT NULL
 );
 
+-- Agregado para explicar mejor la relación entre Clase y Horario
+
+CREATE TABLE "Anuncio" (
+    "id" SERIAL PRIMARY KEY,
+    "mensaje" TEXT,
+    "fecha" DATE NOT NULL
+);
+
+CREATE TABLE "Documento" (
+    "id" SERIAL PRIMARY KEY,
+    "nombre" VARCHAR(255) NOT NULL,
+    "ruta_archivo" VARCHAR(255) NOT NULL
+);
+
 ALTER TABLE "Clase-Alumno" ADD CONSTRAINT "clase_alumno_alumno_id_foreign" FOREIGN KEY("Alumno_id") REFERENCES "Alumno"("id");
 ALTER TABLE "Año y nivel del alumno" ADD CONSTRAINT "año y nivel del alumno_nivel_id_foreign" FOREIGN KEY("Nivel_id") REFERENCES "Nivel"("id");
 ALTER TABLE "Alumno" ADD CONSTRAINT "alumno_usuario_id_foreign" FOREIGN KEY("Usuario_id") REFERENCES "Usuarios"("id");
