@@ -4,6 +4,7 @@ import 'package:Login/director/inicio_director.dart';
 import 'package:Login/director/materialDirector.dart';
 import 'package:Login/director/profesores/profesore.dart';
 import 'package:Login/director/reporteRegistro.dart';
+import 'package:Login/page-1/login.dart';
 import 'package:flutter/material.dart';
 
 class MenuDirector extends StatelessWidget {
@@ -140,12 +141,12 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            onTap: () => navigateToPage(context, Scene()), 
           ),
         ],
       ),
     );
-    ;
+    
   }
 }
 

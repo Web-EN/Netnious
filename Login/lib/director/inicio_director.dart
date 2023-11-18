@@ -78,21 +78,6 @@ class _ContainerInicioDirectorState extends State<ContainerInicioDirector> {
           children: [
             Container(
               width: screenWidth,
-              height: 70,
-              color: Colors.blue, // Color de fondo del AppBar
-              child: Center(
-                child: Text(
-                  'QUEMEN FLUTTER',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: screenWidth,
               height: containerHeight,
               decoration: BoxDecoration(
                 color: Color(0xffebebeb),
@@ -208,7 +193,7 @@ class _ContainerInicioDirectorState extends State<ContainerInicioDirector> {
                           _selectedOption = newValue!;
                         });
                       },
-                      items: ['Análisis de Asistencia', 'Otra Opción']
+                      items: ['Análisis de Asistencia', 'Promedio de Notas']
                           .map((String item) {
                         return DropdownMenuItem<String>(
                           value: item,
@@ -293,7 +278,7 @@ class _ContainerInicioDirectorState extends State<ContainerInicioDirector> {
                         ),
                       ),
                     ),
-                  if (_selectedOption == 'Otra Opción')
+                  if (_selectedOption == 'Promedio de Notas')
                     Positioned(
                       left: 35 * fem,
                       top: 450 * fem,

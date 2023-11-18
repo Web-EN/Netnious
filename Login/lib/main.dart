@@ -1,4 +1,5 @@
 import 'package:Login/Padre-Alumno/inicioPadreAlumno.dart';
+import 'package:Login/page-1/login.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -22,6 +23,6 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSeed(seedColor: Color.fromRGBO(247, 215, 205, 1)),
           useMaterial3: true,
         ),
-        home: InicioPadreAlumno());
+        home: Scene());
   }
 }
