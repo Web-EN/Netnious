@@ -1,4 +1,4 @@
-import 'package:Login/page-1/login.dart';
+import 'package:Login/Padre-Alumno/sources.dart';
 import 'package:flutter/material.dart';
 
 import 'utils.dart';
@@ -17,6 +17,6 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSeed(seedColor: Color.fromRGBO(247, 215, 205, 1)),
           useMaterial3: true,
         ),
-        home: Scene());
+        home: MaterialPadreAlumno());
   }
 }
