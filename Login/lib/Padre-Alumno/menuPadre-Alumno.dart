@@ -96,7 +96,7 @@ class Menu extends StatelessWidget {
                 ),
               ),
               CustomListTile(
-                page: AsistenciaPadreAlumno(),
+                page: Asistencia(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
                   'Ver Reporte de Asistencias',
