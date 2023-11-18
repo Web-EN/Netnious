@@ -37,7 +37,7 @@ class _SeleccionOpcionState extends State<SeleccionOpcion> {
               ),
             ),
             Container(
-              width: screenSize.width / 1.8,
+              width: screenSize.width / 1.9,
               child: DropdownButtonFormField(
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(

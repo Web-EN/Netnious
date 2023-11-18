@@ -1,14 +1,14 @@
 import 'package:Login/profesores/asignar_Fecha_Proyecto/sources.dart';
 import 'package:flutter/material.dart';
 
-class BuscarCurso extends StatefulWidget {
-  const BuscarCurso({Key? key}) : super(key: key);
+class BuscarCursoProyecto extends StatefulWidget {
+  const BuscarCursoProyecto({Key? key}) : super(key: key);
 
   @override
-  State<BuscarCurso> createState() => _BuscarCursoState();
+  State<BuscarCursoProyecto> createState() => _BuscarCursoProyectoState();
 }
 
-class _BuscarCursoState extends State<BuscarCurso> {
+class _BuscarCursoProyectoState extends State<BuscarCursoProyecto> {
   String selectedGrado = '';
   String selectedSeccion = '';
   String selectedCurso = '';
