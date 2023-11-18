@@ -1,30 +1,12 @@
+import 'package:Login/profesores/menuProfesores.dart';
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
+import 'package:table_calendar/table_calendar.dart';
 
-class CalendarioProfesorAlumno extends StatelessWidget {
+class CalendarioProfesoro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Calendario Escolar"),
-        backgroundColor: Color.fromRGBO(235, 235, 235, 1.0),
-      ),
-      body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/fondo.png"),
-
-            fit: BoxFit.contain,
-
-            alignment: Alignment
-                .bottomCenter, // Ajusta la alineación según tus necesidades
-          ),
-        ),
-        child: Content(),
-      ),
-    );
+    return MenuProfesores(funcion: Content());
   }
 }
 

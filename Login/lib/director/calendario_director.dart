@@ -1,25 +1,13 @@
-import 'package:Login/calendario/event.dart';
+import 'package:Login/director/event.dart';
+import 'package:Login/director/menuDirector.dart';
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class CalendarioDirector extends StatelessWidget {
   @override
   Widget build(BuildContext contex) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Calendario',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        body: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/fondo.png"),
-                    fit: BoxFit.contain,
-                    alignment: Alignment.bottomCenter)),
-            child: Content()));
+    return MenuDirector(funcion: Content());
   }
 }
 

@@ -1,22 +1,37 @@
+import 'package:Login/director/alumnos/analisis_alumno_director.dart';
+import 'package:Login/director/calendario_director.dart';
+import 'package:Login/director/inicio_director.dart';
+import 'package:Login/director/materialDirector.dart';
 import 'package:Login/director/profesores/profesore.dart';
+import 'package:Login/director/reporteRegistro.dart';
 import 'package:flutter/material.dart';
 
-import 'alumnos/analisis_alumno_director.dart';
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class MenuDirector extends StatelessWidget {
+  final funcion;
+  const MenuDirector({super.key, required this.funcion});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('NETNIOUS'),
+        backgroundColor: Color.fromRGBO(235, 235, 235, 1),
+        title:
+            Image(image: AssetImage('assets/page-1/images/INGENIUS_logo2.png')),
+        elevation: 0,
       ),
-      body: const Center(
-        child: Text('Contenido de la pantalla principal'),
+      endDrawer: Menu(),
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/page-1/images/fondo_paginas.png"),
+                fit: BoxFit.contain,
+                alignment: Alignment.bottomCenter)),
+        alignment: Alignment.topCenter,
+        child: funcion,
       ),
-      endDrawer: const Menu(),
     );
+    ;
   }
 }
 
@@ -25,6 +40,14 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void navigateToPage(BuildContext context, Widget page) {
+      Navigator.popUntil(context, (route) => route.isFirst);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => page),
+      );
+    }
+
     return Drawer(
       backgroundColor: const Color.fromARGB(255, 44, 44, 44),
       child: ListView(
@@ -39,7 +62,7 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            onTap: () => navigateToPage(context, Director()),
           ),
           ListTile(
             leading: const Icon(Icons.archive, color: Colors.white),
@@ -50,7 +73,7 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            onTap: () => navigateToPage(context, MaterialDirector()),
           ),
           ListTile(
             leading: const Icon(Icons.person, color: Colors.white),
@@ -61,37 +84,12 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        Profesores()), // Reemplaza 'ProfesoresScreen' con el nombre correcto de tu pantalla en profesores.dart
-              );
-            },
+            onTap: () => navigateToPage(context, Profesores()),
           ),
-          ListTile(
-            leading: const Icon(Icons.person, color: Colors.white),
-            title: const Text(
-              'Alumnos',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17,
-              ),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        Alumnos()), // Reemplaza 'ProfesoresScreen' con el nombre correcto de tu pantalla en profesores.dart
-              );
-            },
-          ),
-          CustomExpansionTile(
-            icon: Icon(Icons.folder_open, color: Colors.white),
+          const CustomExpansionTile(
+            icon: Icon(Icons.archive, color: Colors.white),
             title: Text(
-              'Reportes y Registros',
+              'Reportes y registros',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 17,
@@ -99,9 +97,10 @@ class Menu extends StatelessWidget {
             ),
             children: <Widget>[
               CustomListTile(
+                page: ReporteRegistro(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
-                  'Visualizar',
+                  'Visualizar Reportes y registros',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 17,
@@ -113,13 +112,24 @@ class Menu extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.group, color: Colors.white),
             title: const Text(
-              'Visualizar Análisis del Alumno',
+              'Visualizar Analisis del Alumno',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            onTap: () => navigateToPage(context, Alumnos()),
+          ),
+          ListTile(
+            leading: const Icon(Icons.archive, color: Colors.white),
+            title: const Text(
+              'Calendario Escolar',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+              ),
+            ),
+            onTap: () => navigateToPage(context, CalendarioDirector()),
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app, color: Colors.white),
@@ -135,6 +145,7 @@ class Menu extends StatelessWidget {
         ],
       ),
     );
+    ;
   }
 }
 
@@ -197,9 +208,13 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
 class CustomListTile extends StatelessWidget {
   final Icon leadingIcon;
   final Widget title;
+  final page;
 
   const CustomListTile(
-      {super.key, required this.leadingIcon, required this.title});
+      {super.key,
+      required this.leadingIcon,
+      required this.title,
+      required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -208,7 +223,14 @@ class CustomListTile extends StatelessWidget {
       child: ListTile(
         leading: leadingIcon,
         title: title,
-        onTap: () {},
+        onTap: () {
+          Navigator.pop(context);
+          Navigator.pop(context);
+          Navigator.of(context, rootNavigator: true)
+              .popUntil((route) => route.isFirst);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => page));
+        },
       ),
     );
   }

@@ -1,9 +1,14 @@
-import 'package:Login/Padre-Alumno/sources.dart';
+import 'package:Login/Padre-Alumno/inicioPadreAlumno.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'utils.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('es_ES', null);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -17,6 +22,6 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSeed(seedColor: Color.fromRGBO(247, 215, 205, 1)),
           useMaterial3: true,
         ),
-        home: MaterialPadreAlumno());
+        home: InicioPadreAlumno());
   }
 }

@@ -1,3 +1,7 @@
+import 'package:Login/Padre-Alumno/asistenciaPadreAlumno/asistenciaPadreAlumno.dart';
+import 'package:Login/Padre-Alumno/calendarioPadreAlumno.dart';
+import 'package:Login/Padre-Alumno/inicioPadreAlumno.dart';
+import 'package:Login/Padre-Alumno/notasPadreAlumno.dart';
 import 'package:Login/Padre-Alumno/sources.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +61,7 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            onTap: () => navigateToPage(context, InicioPadreAlumno()),
           ),
           ListTile(
             leading: const Icon(Icons.archive, color: Colors.white),
@@ -81,7 +85,7 @@ class Menu extends StatelessWidget {
             ),
             children: <Widget>[
               CustomListTile(
-                page: "",
+                page: NotasPadreAlumno(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
                   'Ver Reporte de Notas',
@@ -92,7 +96,7 @@ class Menu extends StatelessWidget {
                 ),
               ),
               CustomListTile(
-                page: "",
+                page: AsistenciaPadreAlumno(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
                   'Ver Reporte de Asistencias',
@@ -124,7 +128,7 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            onTap: () => navigateToPage(context, CalendarioPadreAlumno()),
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app, color: Colors.white),

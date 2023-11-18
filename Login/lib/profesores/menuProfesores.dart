@@ -1,5 +1,12 @@
 import 'package:Login/profesores/asignar_Fecha_Evaluaciones/asignarFechaEvaluaciones.dart';
 import 'package:Login/profesores/asignar_Fecha_Proyecto/asignarFechaProyecto.dart';
+import 'package:Login/profesores/informeClases.dart';
+import 'package:Login/profesores/inicioProfesor.dart';
+import 'package:Login/profesores/materialProfesor.dart';
+import 'package:Login/profesores/registrarAsistencia.dart';
+import 'package:Login/profesores/reporteAsistenciaProfesor.dart';
+import 'package:Login/profesores/reporteNotasProfesor.dart';
+import 'package:Login/profesores/reportesRegistros.dart';
 import 'package:flutter/material.dart';
 
 class MenuProfesores extends StatelessWidget {
@@ -32,6 +39,13 @@ class MenuProfesores extends StatelessWidget {
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
+  void navigateToPage(BuildContext context, Widget page) {
+    Navigator.popUntil(context, (route) => route.isFirst);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +63,7 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            onTap: () => navigateToPage(context, InicioProfesor()),
           ),
           ListTile(
             leading: const Icon(Icons.archive, color: Colors.white),
@@ -60,44 +74,18 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            onTap: () => navigateToPage(context, MaterialProfesor()),
           ),
-          CustomExpansionTile(
-            icon: Icon(Icons.folder_open, color: Colors.white),
-            title: Text(
-              'Reportes y Registros',
+          ListTile(
+            leading: const Icon(Icons.archive, color: Colors.white),
+            title: const Text(
+              'Reporte y Registros',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 17,
               ),
             ),
-            children: <Widget>[
-              CustomListTile(
-                page: "",
-                leadingIcon: Icon(
-                  Icons.check,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Registrar Notas',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
-                ),
-              ),
-              CustomListTile(
-                page: "",
-                leadingIcon: Icon(Icons.check, color: Colors.white),
-                title: Text(
-                  'Visualizar',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
-                ),
-              ),
-            ],
+            onTap: () => navigateToPage(context, ReporteRegistroProfesor()),
           ),
           CustomExpansionTile(
             icon: Icon(Icons.library_add_check, color: Colors.white),
@@ -132,7 +120,7 @@ class Menu extends StatelessWidget {
                 ),
               ),
               CustomListTile(
-                page: "",
+                page: RegistrarAsistenciaProfesor(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
                   'Registrar Asistencia',
@@ -155,7 +143,7 @@ class Menu extends StatelessWidget {
             ),
             children: <Widget>[
               CustomListTile(
-                page: "",
+                page: ReporteNotasProfesor(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
                   'Ver Reporte de Notas',
@@ -166,7 +154,7 @@ class Menu extends StatelessWidget {
                 ),
               ),
               CustomListTile(
-                page: "",
+                page: ReporteAsistenciaProfesor(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
                   'Ver Reporte de Asistencias',
@@ -177,7 +165,7 @@ class Menu extends StatelessWidget {
                 ),
               ),
               CustomListTile(
-                page: "",
+                page: InformeClases(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
                   'Ver Informes de Clases',
