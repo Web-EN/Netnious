@@ -1,3 +1,7 @@
+import 'package:Login/Padre-Alumno/asistenciaPadreAlumno/asistenciaPadreAlumno.dart';
+import 'package:Login/Padre-Alumno/calendarioPadreAlumno.dart';
+import 'package:Login/Padre-Alumno/horario_PadreAlumno/horarioPadreAlumno.dart';
+import 'package:Login/profesores/calendario_profesor-alumno.dart';
 import 'package:flutter/material.dart';
 
 import '/director/inicio_director.dart';
@@ -10,6 +14,12 @@ class Scene extends StatefulWidget {
 class _SceneState extends State<Scene> {
   String _usuarioTextField = "";
   String _passwordTextField = "";
+  final Map<String, String> usuarios = {
+    'usuario1': 'contraseña1',
+    'usuario2': 'contraseña2',
+    'usuario3': 'contraseña3',
+  };
+
   bool _obscureText =
       true; // Variable para rastrear la visibilidad de la contraseña
 
@@ -206,12 +216,39 @@ class _SceneState extends State<Scene> {
     );
   }
 
-  Future<void> login() async {
-    // No es necesario verificar la URL en este caso
-    // Simplemente ir a la siguiente página
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Director()),
-    );
+ Future<void> login() async {
+    final usuario = _usuarioTextField.trim();
+    final contrasena = _passwordTextField.trim();
+
+    if (usuarios.containsKey(usuario) && usuarios[usuario] == contrasena) {
+      // Acción basada en el usuario que inicia sesión
+      switch (usuario) {
+        case 'usuario1':
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Director()),
+          );
+          break;
+        case 'usuario2':
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CalendarioProfesoro()),
+          );
+          break;
+        case 'usuario3':
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => InicioAsistencia()),
+          );
+          break;
+        default:
+          break;
+      }
+    } else {
+      final snackBar = SnackBar(
+        content: Text('Credenciales incorrectas. Inténtalo de nuevo.'),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 }

@@ -86,7 +86,7 @@ class Menu extends StatelessWidget {
             ),
             children: <Widget>[
               CustomListTile(
-                page: NotasPadreAlumno(),
+                page: InicioNotasAlumno(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
                   'Ver Reporte de Notas',
@@ -97,7 +97,7 @@ class Menu extends StatelessWidget {
                 ),
               ),
               CustomListTile(
-                page: Asistencia(),
+                page: InicioAsistencia(),
                 leadingIcon: Icon(Icons.check, color: Colors.white),
                 title: Text(
                   'Ver Reporte de Asistencias',

@@ -1,3 +1,4 @@
+import 'package:Login/page-1/login.dart';
 import 'package:Login/profesores/asignar_Fecha_Evaluaciones/asignarFechaEvaluaciones.dart';
 import 'package:Login/profesores/asignar_Fecha_Proyecto/asignarFechaProyecto.dart';
 import 'package:Login/profesores/informeClases.dart';
@@ -186,7 +187,7 @@ class Menu extends StatelessWidget {
                 fontSize: 17,
               ),
             ),
-            onTap: () {},
+            onTap: () => navigateToPage(context, Scene()),
           ),
         ],
       ),

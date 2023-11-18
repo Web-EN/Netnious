@@ -1,3 +1,4 @@
+import 'package:Login/Padre-Alumno/menuPadre-Alumno.dart';
 import 'package:Login/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:Login/profesores/asignar_Fecha_Proyecto/sources.dart';
@@ -5,7 +6,14 @@ import 'package:Login/profesores/Responsive.dart';
 
 
 
-void main() => runApp(const Asistencia());
+class InicioAsistencia extends StatelessWidget {
+  const InicioAsistencia({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MenuPadreAlumno(funcion: Asistencia());
+  }
+}
 
 class Asistencia extends StatelessWidget {
   const Asistencia({super.key});
@@ -27,11 +35,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset('assets/page-1/images/INGENIUS_logo2.png'),
-      ),
       body: AsistenciaAlumno(),
-      endDrawer: const Menu(),
     );
   }
 }
