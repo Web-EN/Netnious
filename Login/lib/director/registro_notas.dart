@@ -41,6 +41,7 @@ class _ProfesoresState extends State<Profesores> {
     double baseWidth = 430;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
+    String selectedPeriodo = '';
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

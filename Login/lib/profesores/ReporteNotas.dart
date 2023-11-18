@@ -2,8 +2,7 @@ import 'package:Login/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:Login/profesores/asignar_Fecha_Proyecto/sources.dart';
 import 'package:Login/profesores/Responsive.dart';
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
+
 
 void main() => runApp(const Rendimiento());
 
