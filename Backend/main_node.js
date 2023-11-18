@@ -31,7 +31,11 @@ app.get("/",(req, res) => {
 //Rutas
 app.get("/",(req, res) => {
   res.send("Hello");
-});
+}); //No lo borren xd
+app.use(require("./Routes/login"));
+app.use(require("./Routes/director"));
+app.use(require("./Routes/upload"));
+app.use(require("./Routes/cooky"));
 
 app.listen(PORT, () =>{
   console.log(`La aplicación está escuchando en el puerto ${PORT}`);

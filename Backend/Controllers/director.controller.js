@@ -9,8 +9,8 @@ const pool = new Pool({
     database: 'weben',
     port: 5432,
 
-    // host: 'localhost',
-    // password: '',
+    //host: 'localhost',
+    //password: '',
 });
 
 // 1) Menú (Director_inicio)
@@ -44,7 +44,7 @@ const createAnuncio = async (req, res) => {
 //  2.2) Documentos subir
     // upload.js
 
-// 3) Menú (Director_Profesor)
+// 3) Menú (Director_Profesor) > HECHO
 const getProfesores = async (req, res) => {
     const response = await pool.query('SELECT "Nombres", "Apellidos" FROM public."Profesores"');
     //console.log(response.rows)
