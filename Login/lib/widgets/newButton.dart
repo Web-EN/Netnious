@@ -12,7 +12,7 @@ class NewButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: Color.fromRGBO(247, 215, 205, 1),
         borderRadius: BorderRadius.circular(50),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             blurRadius: 5,
             color: Color.fromRGBO(0, 0, 0, 0.2),
@@ -23,12 +23,14 @@ class NewButton extends StatelessWidget {
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            elevation: 0, backgroundColor: Color.fromRGBO(250, 255, 255, 0.5)),
+            elevation: 0,
+            backgroundColor: const Color.fromRGBO(250, 255, 255, 0.5)),
+        onPressed: action,
         child: Text(
           title,
-          style: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.5), fontSize: 18),
+          style: const TextStyle(
+              color: Color.fromRGBO(0, 0, 0, 0.5), fontSize: 18),
         ),
-        onPressed: action,
       ),
     );
   }

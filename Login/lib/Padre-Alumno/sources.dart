@@ -1,0 +1,10 @@
+export 'horario_PadreAlumno/horarioPadreAlumno.dart';
+export 'horario_PadreAlumno/widgets/buscarCursoHorario.dart';
+export 'horario_PadreAlumno/widgets/tablaHorario.dart';
+export 'horario_PadreAlumno/widgets/tareasPendientes.dart';
+export 'horario_PadreAlumno/widgets/verHorario.dart';
+export 'material_Padre-Alumno/materialPadre-Alumno.dart';
+export 'material_Padre-Alumno/widgets/buscarCursoMateriales.dart';
+export 'material_Padre-Alumno/widgets/tablaMateriales.dart';
+export 'material_Padre-Alumno/widgets/verMaterial.dart';
+export 'menuPadre-Alumno.dart';
